@@ -3,5 +3,5 @@ phases:
   install:
     commands:
       - npm install
-      - npm run build
+      - npm run build:prod
       - aws s3 sync dist/lwangular s3://lwangular --delete
