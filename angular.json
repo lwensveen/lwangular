@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "lodewijkwensveen": {
+    "lwangular": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/lodewijkwensveen",
+            "outputPath": "dist/lwangular",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -62,18 +62,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "lodewijkwensveen:build"
+            "browserTarget": "lwangular:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "lodewijkwensveen:build:production"
+              "browserTarget": "lwangular:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "lodewijkwensveen:build"
+            "browserTarget": "lwangular:build"
           }
         },
         "test": {
@@ -107,7 +107,7 @@
         }
       }
     },
-    "lodewijkwensveen-e2e": {
+    "lwangular-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -116,11 +116,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "lodewijkwensveen:serve"
+            "devServerTarget": "lwangular:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "lodewijkwensveen:serve:production"
+              "devServerTarget": "lwangular:serve:production"
             }
           }
         },
@@ -136,5 +136,5 @@
       }
     }
   },
-  "defaultProject": "lodewijkwensveen"
+  "defaultProject": "lwangular"
 }
