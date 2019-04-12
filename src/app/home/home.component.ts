@@ -20,9 +20,6 @@ export class HomeComponent implements OnInit {
 
 
   getContent(): void {
-
     this.$content = this.contentService.getContent();
-    // this.contentService.getContent()
-    //   .subscribe(content => this.content = content);
   }
 }

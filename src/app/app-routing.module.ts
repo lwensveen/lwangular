@@ -9,6 +9,10 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
+    path: 'angular',
+    component: HomeComponent
+  },
+  {
     path: '',
     redirectTo: '',
     pathMatch: 'full'
