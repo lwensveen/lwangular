@@ -1,12 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subject, Subscription } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, Subscription } from 'rxjs';
 import { PhonesService } from './services/phones.service';
-import { Phones } from './services/phones';
 import { Brands } from './services/brands';
 import { BrandsService } from './services/brands.service';
 import { OperatingSystem } from './services/operatingSystem';
 import { OperatingSystemService } from './services/operating-system.service';
-import { distinctUntilChanged } from 'rxjs/operators';
+import { distinctUntilChanged, filter, tap } from 'rxjs/operators';
 
 @Component({
     selector: 'app-shop',
@@ -14,13 +13,12 @@ import { distinctUntilChanged } from 'rxjs/operators';
     styleUrls: ['./shop.component.scss']
 })
 export class ShopComponent implements OnInit, OnDestroy {
-    $phones: Observable<Phones[]>;
+    $phonesSubject = new BehaviorSubject(null);
     $brands: Observable<Brands[]>;
     $handleBrands = new Subject();
     $operatingSystem: Observable<OperatingSystem[]>;
     $handleOperatingSystem = new Subject();
     subscriptions: Subscription[] = [];
-
 
     constructor(
         private phonesService: PhonesService,
@@ -37,6 +35,14 @@ export class ShopComponent implements OnInit, OnDestroy {
                 distinctUntilChanged()
             ).subscribe(evt => {
                 console.log(evt);
+
+                const test = this.$phonesSubject.pipe(
+                    tap(test => console.log('test', test)),
+                    filter(phone => phone.title.includes(evt)),
+                );
+
+                test.subscribe(val => console.log(val));
+
             })
         );
 
@@ -45,6 +51,7 @@ export class ShopComponent implements OnInit, OnDestroy {
                 distinctUntilChanged()
             ).subscribe(evt => {
                 console.log(evt);
+
             })
         );
 
@@ -55,7 +62,7 @@ export class ShopComponent implements OnInit, OnDestroy {
     }
 
     getContent(): void {
-        this.$phones = this.phonesService.getPhones();
+        this.phonesService.getPhones().subscribe(data => this.$phonesSubject.next(data));
 
         this.$brands = this.brandsService.getBrands();
         this.$operatingSystem = this.operatingSystemService.getOS();

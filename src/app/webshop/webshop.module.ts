@@ -14,9 +14,10 @@ import {
     MatInputModule
 } from '@angular/material';
 import { DetailComponent } from './shop/detail/detail.component';
+import { ShoppingCartComponent } from './shop/shoppingcart/shoppingcart.component';
 
 @NgModule({
-    declarations: [WebshopComponent, ShopComponent, DetailComponent],
+    declarations: [WebshopComponent, ShopComponent, DetailComponent, ShoppingCartComponent],
     imports: [
         CommonModule,
         WebshopRoutingModule,

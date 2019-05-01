@@ -52,7 +52,7 @@
                 </mat-accordion>
             </div>
 
-            <div *ngIf="($phones | async) as phones" fxLayout="column">
+            <div *ngIf="($phonesSubject | async) as phones" fxLayout="column">
                 <h2>Telefoons</h2>
                 <div fxLayout="row" fxLayoutGap="5%">
 
