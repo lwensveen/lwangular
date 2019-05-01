@@ -6,6 +6,10 @@ import { CsvUploadComponent } from './csv-upload/csv-upload.component';
 
 const routes: Routes = [
     {
+        path: 'examples/webshop',
+        loadChildren: './webshop/webshop.module#WebshopModule'
+    },
+    {
         path: '',
         component: HomeComponent
     },

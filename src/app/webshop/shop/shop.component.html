@@ -1,0 +1,81 @@
+<div fxLayout="row" fxLayoutAlign="space-around">
+    <div fxLayout="column">
+        <div fxFlexAlign="center">
+            <h1>Alle telefoons</h1>
+            <p>Hier vindt u alle telefoons</p>
+        </div>
+
+
+        <div *ngIf="($brands || $operatingSystem)" fxLayout="row" fxLayoutGap="5%">
+            <div fxLayout="column">
+                <h2>Filters</h2>
+                <mat-accordion fxLayout="column" fxLayoutGap="5%">
+
+                    <mat-expansion-panel [expanded]="true">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Merken
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                bv. Apple, Samsung
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+
+                        <div fxLayout="column">
+                            <mat-checkbox
+                                *ngFor="let brand of $brands | async"
+                                (click)="this.$handleBrands.next(brand.name)"
+                            >{{brand.name}}</mat-checkbox>
+                        </div>
+
+                    </mat-expansion-panel>
+
+
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Besturingssysteem
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                bv. Android
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+
+                        <div fxLayout="column">
+                            <mat-checkbox
+                                *ngFor="let os of $operatingSystem | async"
+                                (click)="this.$handleOperatingSystem.next(os.name)"
+                            >{{os.name}}</mat-checkbox>
+                        </div>
+
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+
+            <div *ngIf="($phones | async) as phones" fxLayout="column">
+                <h2>Telefoons</h2>
+                <div fxLayout="row" fxLayoutGap="5%">
+
+                    <mat-card *ngFor="let phone of phones" fxLayout="column" fxLayoutAlign="center"
+                              class="example-card">
+                        <mat-card-header>
+                            <mat-card-title>{{phone.title}}</mat-card-title>
+                            <mat-card-subtitle>{{phone.subtitle}}</mat-card-subtitle>
+                        </mat-card-header>
+                        <img mat-card-image src="./assets/webshop/dvi-front_Samsung_S10_Blue_305x450.png"
+                             alt="Photo of a Shiba Inu">
+                        <mat-card-content>
+                            <h3>€ 46,50</h3>
+                            <p>Bijbetaling toestel € 59,00 excl. eenmalige kosten 5 GB + 120 min. bellen</p>
+                        </mat-card-content>
+                        <mat-card-actions>
+                            <button mat-flat-button color="primary">Vergelijken</button>
+                        </mat-card-actions>
+                    </mat-card>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
