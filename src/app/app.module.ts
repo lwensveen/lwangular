@@ -6,11 +6,19 @@ import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
-import { MatButtonModule, MatCardModule, MatIconModule, MatListModule, MatMenuModule } from '@angular/material';
+import {
+    MatButtonModule,
+    MatCardModule,
+    MatIconModule,
+    MatListModule,
+    MatMenuModule,
+    MatToolbarModule
+} from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
+import { CsvUploadComponent } from './csv-upload/csv-upload.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +27,7 @@ import { FooterComponent } from './layout/footer/footer.component';
     HomeComponent,
     HeaderComponent,
     FooterComponent,
+    CsvUploadComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,6 +39,7 @@ import { FooterComponent } from './layout/footer/footer.component';
     MatIconModule,
     MatListModule,
     MatMenuModule,
+      MatToolbarModule,
     FlexLayoutModule
   ],
   providers: [],
