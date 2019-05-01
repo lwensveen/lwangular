@@ -56,18 +56,28 @@
                 <h2>Telefoons</h2>
                 <div fxLayout="row" fxLayoutGap="5%">
 
-                    <mat-card *ngFor="let phone of phones" fxLayout="column" fxLayoutAlign="center"
-                              class="example-card">
-                        <mat-card-header>
+                    <mat-card *ngFor="let phone of phones"
+                              fxLayout="column"
+                              fxLayoutAlign="center"
+                              class="example-card"
+                              [routerLink]="['product', fixUrl(phone.title),  phone.id]">
+
+                        <mat-card-header fxFlexAlign="center">
                             <mat-card-title>{{phone.title}}</mat-card-title>
                             <mat-card-subtitle>{{phone.subtitle}}</mat-card-subtitle>
                         </mat-card-header>
-                        <img mat-card-image src="./assets/webshop/dvi-front_Samsung_S10_Blue_305x450.png"
-                             alt="Photo of a Shiba Inu">
+
+                        <img mat-card-image src="{{phone.img}}" alt="{{phone.title}}">
+
+                        <mat-chip-list fxFlexAlign="center">
+                            <mat-chip *ngFor="let color of phone.colors" [ngStyle]="{backgroundColor: color.color}">{{color.color}}</mat-chip>
+                        </mat-chip-list>
+
                         <mat-card-content>
                             <h3>€ 46,50</h3>
                             <p>Bijbetaling toestel € 59,00 excl. eenmalige kosten 5 GB + 120 min. bellen</p>
                         </mat-card-content>
+
                         <mat-card-actions>
                             <button mat-flat-button color="primary">Vergelijken</button>
                         </mat-card-actions>

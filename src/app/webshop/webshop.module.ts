@@ -8,13 +8,15 @@ import { FlexModule } from '@angular/flex-layout';
 import {
     MatButtonModule,
     MatCardModule, MatCheckboxModule,
+    MatChipsModule,
     MatExpansionModule,
     MatFormFieldModule,
     MatInputModule
 } from '@angular/material';
+import { DetailComponent } from './shop/detail/detail.component';
 
 @NgModule({
-    declarations: [WebshopComponent, ShopComponent],
+    declarations: [WebshopComponent, ShopComponent, DetailComponent],
     imports: [
         CommonModule,
         WebshopRoutingModule,
@@ -24,7 +26,8 @@ import {
         MatFormFieldModule,
         MatInputModule,
         MatButtonModule,
-        MatCheckboxModule
+        MatCheckboxModule,
+        MatChipsModule
     ]
 })
 export class WebshopModule {

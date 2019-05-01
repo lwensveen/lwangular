@@ -6,7 +6,7 @@ import { Brands } from './services/brands';
 import { BrandsService } from './services/brands.service';
 import { OperatingSystem } from './services/operatingSystem';
 import { OperatingSystemService } from './services/operating-system.service';
-import { distinctUntilChanged, filter } from 'rxjs/operators';
+import { distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
     selector: 'app-shop',
@@ -50,6 +50,9 @@ export class ShopComponent implements OnInit, OnDestroy {
 
     }
 
+    fixUrl(url) {
+        return url.split(' ').join('-').toLowerCase();
+    }
 
     getContent(): void {
         this.$phones = this.phonesService.getPhones();

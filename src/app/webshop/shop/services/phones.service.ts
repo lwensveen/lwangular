@@ -8,7 +8,15 @@ export const PHONES: Phones[] = [
         id: 1,
         title: 'Samsung Galaxy S10',
         subtitle: '128GB',
-        img: '/assets/javascript.svg',
+        img: '/assets/webshop/dvi-front_Samsung_S10_Blue_305x450.png',
+        colors: [
+            {
+                color: 'red'
+            },
+            {
+                color: 'blue'
+            }
+        ],
         bulletpoints: [
             {
                 point: 'Functional Programming'
@@ -26,7 +34,15 @@ export const PHONES: Phones[] = [
         id: 2,
         title: 'Apple iPhone XS',
         subtitle: '64GB',
-        img: '/assets/javascript.svg',
+        img: '/assets/webshop/dvi-front_iPhone_Xs_Gold_305x450.png',
+        colors: [
+            {
+                color: 'red'
+            },
+            {
+                color: 'blue'
+            }
+        ],
         bulletpoints: [
             {
                 point: 'Functional Programming'
