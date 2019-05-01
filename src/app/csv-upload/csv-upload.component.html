@@ -1,0 +1,29 @@
+<div fxLayout="row" fxLayoutAlign="space-around">
+    <div fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="space-between">
+
+        <h1>{{title}}</h1>
+
+        <input type="file" name="csv" accept=".csv" (change)="this.$handleCSV.next($event)"/>
+
+        <div *ngIf="($csv | async) as csv" fxLayout="column" fxLayoutGap="20px">
+            <label>
+                <input placeholder="Filter Issuecount" name="issueCountFilter"
+                       (input)="this.$handleIssueCountFilter.next($event)"/>
+            </label>
+
+            <table>
+                <tr (click)="orderBy()">
+                    <th *ngFor="let header of headers">{{header}}</th>
+                </tr>
+                <tr *ngFor="let person of csv">
+                    <td>{{person.firstName}}</td>
+                    <td>{{person.surname}}</td>
+                    <td>{{person.issueCount}}</td>
+                    <td>{{person.dateOfBirth}}</td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+</div>

@@ -18,6 +18,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
+import { CsvUploadComponent } from './csv-upload/csv-upload.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { FooterComponent } from './layout/footer/footer.component';
     HomeComponent,
     HeaderComponent,
     FooterComponent,
+    CsvUploadComponent,
   ],
   imports: [
     BrowserModule,
