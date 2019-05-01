@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Person } from './models/person';
-import { Subject } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -10,7 +9,8 @@ export class CsvService {
     private persons: Person[] = [];
     private person: string[];
 
-    constructor() {}
+    constructor() {
+    }
 
     extractData(data) {
         const allTextLines = data.split(/\r\n|\n/);

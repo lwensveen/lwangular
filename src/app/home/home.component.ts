@@ -4,22 +4,22 @@ import { Observable } from 'rxjs';
 import { Content } from '../content';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  $content: Observable<Content[]>;
+    $content: Observable<Content[]>;
 
-  constructor(private contentService: ContentService) {
-  }
+    constructor(private contentService: ContentService) {
+    }
 
-  ngOnInit() {
-    this.getContent();
-  }
+    ngOnInit() {
+        this.getContent();
+    }
 
 
-  getContent(): void {
-    this.$content = this.contentService.getContent();
-  }
+    getContent(): void {
+        this.$content = this.contentService.getContent();
+    }
 }

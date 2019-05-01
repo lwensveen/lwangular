@@ -1,14 +1,14 @@
 <div fxLayout="row" fxLayoutAlign="space-around">
-    <div fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="space-between">
+    <div fxLayout="column" fxLayoutAlign="space-between" fxLayoutGap="20px">
 
         <h1>{{title}}</h1>
 
-        <input type="file" name="csv" accept=".csv" (change)="this.$handleCSV.next($event)"/>
+        <input (change)="this.$handleCSV.next($event)" accept=".csv" name="csv" type="file"/>
 
         <div *ngIf="($csv | async) as csv" fxLayout="column" fxLayoutGap="20px">
             <label>
-                <input placeholder="Filter Issuecount" name="issueCountFilter"
-                       (input)="this.$handleIssueCountFilter.next($event)"/>
+                <input (input)="this.$handleIssueCountFilter.next($event)" name="issueCountFilter"
+                       placeholder="Filter Issuecount"/>
             </label>
 
             <table>
