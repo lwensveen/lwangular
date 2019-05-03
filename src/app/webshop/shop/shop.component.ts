@@ -5,7 +5,9 @@ import { Brands } from './services/brands';
 import { BrandsService } from './services/brands.service';
 import { OperatingSystem } from './services/operatingSystem';
 import { OperatingSystemService } from './services/operating-system.service';
-import { distinctUntilChanged, filter, tap } from 'rxjs/operators';
+import { distinctUntilChanged, map, take } from 'rxjs/operators';
+import { Phones } from './services/phones';
+import { MatCheckbox } from "@angular/material";
 
 @Component({
     selector: 'app-shop',
@@ -18,6 +20,7 @@ export class ShopComponent implements OnInit, OnDestroy {
     $handleBrands = new Subject();
     $operatingSystem: Observable<OperatingSystem[]>;
     $handleOperatingSystem = new Subject();
+    phones: Phones[];
     subscriptions: Subscription[] = [];
 
     constructor(
@@ -33,24 +36,38 @@ export class ShopComponent implements OnInit, OnDestroy {
         this.subscriptions.push(
             this.$handleBrands.pipe(
                 distinctUntilChanged()
-            ).subscribe(evt => {
-                console.log(evt);
+            ).subscribe((evt: MatCheckbox) => {
 
-                const test = this.$phonesSubject.pipe(
-                    tap(test => console.log('test', test)),
-                    filter(phone => phone.title.includes(evt)),
-                );
+                if (evt.checked === true) {
+                    this.$phonesSubject.pipe(
+                        take(1),
+                        map(phones => phones.filter(phone => phone.brand === evt.source.value)),
+                    ).subscribe(val => {
+                        this.$phonesSubject.next(val);
+                    });
+                    return;
+                }
 
-                test.subscribe(val => console.log(val));
-
+                return this.$phonesSubject.next(this.phones);
             })
         );
 
         this.subscriptions.push(
             this.$handleOperatingSystem.pipe(
                 distinctUntilChanged()
-            ).subscribe(evt => {
-                console.log(evt);
+            ).subscribe((evt: MatCheckbox)  => {
+
+                if (evt.checked === true) {
+                    this.$phonesSubject.pipe(
+                        take(1),
+                        map(phones => phones.filter(phone => phone.os === evt.source.value)),
+                    ).subscribe(val => {
+                        this.$phonesSubject.next(val);
+                    });
+                    return;
+                }
+
+                return this.$phonesSubject.next(this.phones);
 
             })
         );
@@ -62,7 +79,10 @@ export class ShopComponent implements OnInit, OnDestroy {
     }
 
     getContent(): void {
-        this.phonesService.getPhones().subscribe(data => this.$phonesSubject.next(data));
+        this.phonesService.getPhones().subscribe(phones => {
+            this.phones = phones;
+            this.$phonesSubject.next(phones);
+        });
 
         this.$brands = this.brandsService.getBrands();
         this.$operatingSystem = this.operatingSystemService.getOS();

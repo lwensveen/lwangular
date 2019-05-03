@@ -8,6 +8,8 @@ export const PHONES: Phones[] = [
         id: 1,
         title: 'Samsung Galaxy S10',
         subtitle: '128GB',
+        brand: 'Samsung',
+        os: 'Android',
         img: '/assets/webshop/dvi-front_Samsung_S10_Blue_305x450.png',
         colors: [
             {
@@ -34,7 +36,37 @@ export const PHONES: Phones[] = [
         id: 2,
         title: 'Apple iPhone XS',
         subtitle: '64GB',
+        brand: 'Apple',
+        os: 'iOS',
         img: '/assets/webshop/dvi-front_iPhone_Xs_Gold_305x450.png',
+        colors: [
+            {
+                color: 'red'
+            },
+            {
+                color: 'blue'
+            }
+        ],
+        bulletpoints: [
+            {
+                point: 'Functional Programming'
+            },
+            {
+                point: 'Prototypal Inheritance',
+            },
+            {
+                point: 'Object composition > Classical inheritance',
+            }
+        ],
+        content: 'Ik heb een ruime ervaring met Angular. '
+    },
+    {
+        id: 3,
+        title: 'Samsung Galaxy S10',
+        subtitle: '128GB',
+        brand: 'Samsung',
+        os: 'Android',
+        img: '/assets/webshop/dvi-front_Samsung_S10_Blue_305x450.png',
         colors: [
             {
                 color: 'red'

@@ -24,8 +24,10 @@
                         <div fxLayout="column">
                             <mat-checkbox
                                 *ngFor="let brand of $brands | async"
-                                (click)="this.$handleBrands.next(brand.name)"
-                            >{{brand.name}}</mat-checkbox>
+                                (change)="this.$handleBrands.next($event)"
+                                [value]="brand.name">
+                                {{brand.name}}
+                            </mat-checkbox>
                         </div>
 
                     </mat-expansion-panel>
@@ -44,8 +46,10 @@
                         <div fxLayout="column">
                             <mat-checkbox
                                 *ngFor="let os of $operatingSystem | async"
-                                (click)="this.$handleOperatingSystem.next(os.name)"
-                            >{{os.name}}</mat-checkbox>
+                                (change)="this.$handleOperatingSystem.next($event)"
+                                [value]="os.name">
+                                {{os.name}}
+                            </mat-checkbox>
                         </div>
 
                     </mat-expansion-panel>
@@ -70,7 +74,8 @@
                         <img mat-card-image src="{{phone.img}}" alt="{{phone.title}}">
 
                         <mat-chip-list fxFlexAlign="center">
-                            <mat-chip *ngFor="let color of phone.colors" [ngStyle]="{backgroundColor: color.color}">{{color.color}}</mat-chip>
+                            <mat-chip *ngFor="let color of phone.colors"
+                                      [ngStyle]="{backgroundColor: color.color}">{{color.color}}</mat-chip>
                         </mat-chip-list>
 
                         <mat-card-content>
