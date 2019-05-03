@@ -7,7 +7,7 @@ import { OperatingSystem } from './services/operatingSystem';
 import { OperatingSystemService } from './services/operating-system.service';
 import { distinctUntilChanged, map, take } from 'rxjs/operators';
 import { Phones } from './services/phones';
-import { MatCheckbox } from "@angular/material";
+import { MatCheckboxChange } from '@angular/material';
 
 @Component({
     selector: 'app-shop',
@@ -36,7 +36,7 @@ export class ShopComponent implements OnInit, OnDestroy {
         this.subscriptions.push(
             this.$handleBrands.pipe(
                 distinctUntilChanged()
-            ).subscribe((evt: MatCheckbox) => {
+            ).subscribe((evt: MatCheckboxChange) => {
 
                 if (evt.checked === true) {
                     this.$phonesSubject.pipe(
@@ -55,7 +55,7 @@ export class ShopComponent implements OnInit, OnDestroy {
         this.subscriptions.push(
             this.$handleOperatingSystem.pipe(
                 distinctUntilChanged()
-            ).subscribe((evt: MatCheckbox)  => {
+            ).subscribe((evt: MatCheckboxChange)  => {
 
                 if (evt.checked === true) {
                     this.$phonesSubject.pipe(
