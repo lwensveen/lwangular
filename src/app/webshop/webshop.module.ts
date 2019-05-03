@@ -10,8 +10,8 @@ import {
     MatCardModule, MatCheckboxModule,
     MatChipsModule,
     MatExpansionModule,
-    MatFormFieldModule,
-    MatInputModule
+    MatFormFieldModule, MatIconModule,
+    MatInputModule, MatListModule
 } from '@angular/material';
 import { DetailComponent } from './shop/detail/detail.component';
 import { ShoppingCartComponent } from './shop/shoppingcart/shoppingcart.component';
@@ -28,7 +28,9 @@ import { ShoppingCartComponent } from './shop/shoppingcart/shoppingcart.componen
         MatInputModule,
         MatButtonModule,
         MatCheckboxModule,
-        MatChipsModule
+        MatChipsModule,
+        MatListModule,
+        MatIconModule
     ]
 })
 export class WebshopModule {
