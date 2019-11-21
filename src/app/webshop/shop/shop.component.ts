@@ -7,7 +7,7 @@ import { OperatingSystem } from './services/operatingSystem';
 import { OperatingSystemService } from './services/operating-system.service';
 import { distinctUntilChanged, map, take } from 'rxjs/operators';
 import { Phones } from './services/phones';
-import { MatCheckboxChange } from '@angular/material';
+import { MatCheckboxChange } from '@angular/material/checkbox';
 
 @Component({
     selector: 'app-shop',
