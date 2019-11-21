@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { WebshopRoutingModule } from './webshop-routing.module';
 import { WebshopComponent } from './webshop.component';
 import { ShopComponent } from './shop/shop.component';
-import { FlexModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -21,17 +20,16 @@ import { ShoppingCartComponent } from './shop/shoppingcart/shoppingcart.componen
     declarations: [WebshopComponent, ShopComponent, DetailComponent, ShoppingCartComponent],
     imports: [
         CommonModule,
-        WebshopRoutingModule,
-        FlexModule,
-        MatCardModule,
-        MatExpansionModule,
-        MatFormFieldModule,
-        MatInputModule,
         MatButtonModule,
+        MatCardModule,
         MatCheckboxModule,
         MatChipsModule,
+        MatExpansionModule,
+        MatFormFieldModule,
+        MatIconModule,
+        MatInputModule,
         MatListModule,
-        MatIconModule
+        WebshopRoutingModule,
     ]
 })
 export class WebshopModule {

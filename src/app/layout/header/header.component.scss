@@ -1,5 +1,12 @@
 header {
-    padding: 0 40px;
     border-bottom: 1px solid grey;
+    display: flex;
+    flex-direction: row;
     font-family: Roboto, "Helvetica Neue", sans-serif;
+    justify-content: space-between;
+    padding: 0 40px;
+
+    nav {
+        align-self: center;
+    }
 }

@@ -12,7 +12,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
@@ -21,24 +20,23 @@ import { CsvUploadComponent } from './csv-upload/csv-upload.component';
 @NgModule({
     declarations: [
         AppComponent,
-        PageNotFoundComponent,
-        HomeComponent,
-        HeaderComponent,
-        FooterComponent,
         CsvUploadComponent,
+        FooterComponent,
+        HeaderComponent,
+        HomeComponent,
+        PageNotFoundComponent,
     ],
     imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
         AppRoutingModule,
+        BrowserAnimationsModule,
+        BrowserModule,
         HttpClientModule,
-        MatCardModule,
         MatButtonModule,
+        MatCardModule,
         MatIconModule,
         MatListModule,
         MatMenuModule,
         MatToolbarModule,
-        FlexLayoutModule
     ],
     providers: [],
     bootstrap: [AppComponent]

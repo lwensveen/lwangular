@@ -1,12 +1,10 @@
 <div class="main1">
     <div class="main">
-        <div fxLayout="row" fxLayoutAlign="space-evenly">
-            <mat-toolbar color="#2aa198">
-                Mijn Angular projecten
-            </mat-toolbar>
-        </div>
+        <mat-toolbar color="#2aa198">
+            Mijn Angular projecten
+        </mat-toolbar>
 
-        <div class="projects" fxLayout="row wrap" fxLayoutAlign="space-evenly">
+        <div class="projects" >
             <mat-card *ngFor="let content of $content | async" class="example-card">
                 <mat-card-header>
                     <div class="example-header-image" mat-card-avatar></div>
