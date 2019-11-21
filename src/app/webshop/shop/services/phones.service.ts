@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Phones } from './phones';
+import { map } from "rxjs/operators";
 
 
 export const PHONES: Phones[] = [
@@ -102,6 +103,16 @@ export class PhonesService {
     getPhones(): Observable<Phones[]> {
 
         return of(PHONES);
+        // return this.http.get<Content[]>(CONTENT)
+        //   .pipe(
+        //     catchError(this.handleError('getHeroes', []))
+        //   );
+    }
+
+    getPhonesbyId(id): Observable<Phones[]> {
+        return of(PHONES).pipe(
+            map(phones => phones.filter(phone => phone.id === id))
+        );
         // return this.http.get<Content[]>(CONTENT)
         //   .pipe(
         //     catchError(this.handleError('getHeroes', []))
