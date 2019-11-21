@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
-import { Person } from './models/person';
+import { Person } from './person';
 import { CsvService } from './csv.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { CsvService } from './csv.service';
 export class CsvUploadComponent implements OnInit, OnDestroy {
 
     public title = 'CSV import';
-    public $csv = new Subject<any>();
+    public $csv = new Subject<Person[]>();
     public $handleCSV = new Subject<any>();
     public $handleIssueCountFilter = new Subject<any>();
 

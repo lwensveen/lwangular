@@ -22,6 +22,25 @@ export const CONTENT: Content[] = [
             }
         ],
         content: 'Ik heb een ruime ervaring met Angular.'
+    },
+    {
+        id: 2,
+        title: 'CSV Upload',
+        subtitle: 'Example CSV upload functionality',
+        avatar: '/assets/javascript.svg',
+        url: 'examples/csv-upload',
+        bulletpoints: [
+            {
+                point: 'Functional Programming'
+            },
+            {
+                point: 'Prototypal Inheritance',
+            },
+            {
+                point: 'Object composition > Classical inheritance',
+            }
+        ],
+        content: 'Ik heb een ruime ervaring met Angular.'
     }
 ];
 

@@ -15,6 +15,13 @@ h1, h2, h3, h4, h5, h6, .mat-card-title, .mat-toolbar {
     font-weight: 300;
 }
 
+app-csv-upload {
+    align-items: center;
+    display: flex;
+    height: calc(100% - 79px - 50px);
+    justify-content: center;
+}
+
 .test {
     color: red;
     &.test2 {

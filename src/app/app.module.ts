@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { CsvUploadComponent } from './csv-upload/csv-upload.component';
+import { MatInputModule } from "@angular/material/input";
 
 @NgModule({
     declarations: [
@@ -37,6 +38,7 @@ import { CsvUploadComponent } from './csv-upload/csv-upload.component';
         MatListModule,
         MatMenuModule,
         MatToolbarModule,
+        MatInputModule,
     ],
     providers: [],
     bootstrap: [AppComponent]
