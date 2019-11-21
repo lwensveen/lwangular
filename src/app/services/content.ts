@@ -1,7 +1,8 @@
 export class Content {
     id: number;
-    name: string;
-    subtitle: string | null;
+    title: string;
+    subtitle: string;
+    url: string;
     avatar: string;
     bulletpoints: Bulletpoints[];
     content: string;

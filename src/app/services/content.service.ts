@@ -6,9 +6,10 @@ import { Clients, Content } from './content';
 export const CONTENT: Content[] = [
     {
         id: 1,
-        name: 'JavaScript',
-        subtitle: 'Senior - ES5 - ES6',
+        title: 'Webshop',
+        subtitle: 'Example e-commerce site (Telecom)',
         avatar: '/assets/javascript.svg',
+        url: 'examples/webshop',
         bulletpoints: [
             {
                 point: 'Functional Programming'
@@ -20,69 +21,7 @@ export const CONTENT: Content[] = [
                 point: 'Object composition > Classical inheritance',
             }
         ],
-        content: 'Ik heb een ruime ervaring met Angular. '
-    },
-    {
-        id: 2,
-        name: 'Angular',
-        subtitle: 'Senior - 2/4/6/7 & JS',
-        avatar: '/assets/angular.svg',
-        bulletpoints: [
-            {
-                point: 'NgRx'
-            },
-            {
-                point: 'RxJs'
-            },
-            {
-                point: 'TypeScript'
-            }
-        ],
-        content: 'Ik heb een ruime ervaring met Angular. '
-    },
-    {
-        id: 3,
-        name: 'React',
-        subtitle: 'Junior',
-        avatar: '/assets/react.svg',
-        bulletpoints: [
-            {
-                point: 'Redux'
-            },
-        ],
-        content: ''
-    },
-    {
-        id: 4,
-        name: 'AWS',
-        subtitle: 'Medior',
-        avatar: '/assets/aws.svg',
-        bulletpoints: [
-            {
-                point: 'AWS Lambda'
-            },
-            {
-                point: 'Amazon DynamoDB'
-            },
-            {
-                point: 'Amazon S3'
-            }
-        ],
-        content: ''
-
-    },
-    {
-        id: 5,
-        name: 'NodeJS',
-        subtitle: 'Medior',
-        avatar: '/assets/nodejs.svg',
-        bulletpoints: [
-            {
-                point: 'Express'
-            },
-        ],
-        content: ''
-
+        content: 'Ik heb een ruime ervaring met Angular.'
     }
 ];
 

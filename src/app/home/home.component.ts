@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ContentService } from '../services/content.service';
 import { Observable } from 'rxjs';
-import { Content } from '../content';
+import { Content } from '../services/content';
 
 @Component({
     selector: 'app-home',
