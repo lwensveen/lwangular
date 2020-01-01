@@ -1,4 +1,4 @@
-export class Phones {
+export class Phone {
     id: number;
     title: string;
     subtitle: string | null;

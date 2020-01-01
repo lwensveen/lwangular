@@ -1,0 +1,71 @@
+.detail {
+    background-color: #759BA4;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    .choices {
+        h2 {
+            margin-top: 0;
+        }
+
+        .dkwoa {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 10px;
+
+            .mat-radio-button {
+
+                .price {
+                    margin-left: 10px;
+                }
+
+                &:not(:last-child) {
+                    margin-right: 0;
+                    margin-bottom: 10px;
+                }
+            }
+        }
+
+        .mat-radio-button {
+            padding: 10px 20px;
+            border: 1px solid red;
+            border-radius: 3%;
+
+            &:not(:last-child) {
+                margin-right: 10px;
+            }
+        }
+    }
+
+    .receipt {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .views {
+            margin: 20px 0;
+
+            button:not(:last-child) {
+                margin-right: 10px;
+            }
+        }
+
+        .color-options {
+
+        }
+
+        .mat-card {
+            width: 250px;
+
+            .mat-card-content {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+
+            }
+        }
+
+    }
+}

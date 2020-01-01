@@ -6,7 +6,7 @@ import { BrandsService } from './services/brands.service';
 import { OperatingSystem } from './services/operatingSystem';
 import { OperatingSystemService } from './services/operating-system.service';
 import { distinctUntilChanged, map, take } from 'rxjs/operators';
-import { Phones } from './services/phones';
+import { Phone } from './services/phones';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 
 @Component({
@@ -20,7 +20,7 @@ export class ShopComponent implements OnInit, OnDestroy {
     $handleBrands = new Subject();
     $operatingSystem: Observable<OperatingSystem[]>;
     $handleOperatingSystem = new Subject();
-    phones: Phones[];
+    phones: Phone[];
     subscriptions: Subscription[] = [];
 
     constructor(

@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Phones } from './phones';
-import { map } from "rxjs/operators";
+import { Phone } from './phones';
+import { map } from 'rxjs/operators';
 
 
-export const PHONES: Phones[] = [
+export const PHONES: Phone[] = [
     {
         id: 1,
         title: 'Samsung Galaxy S10',
@@ -100,7 +100,7 @@ export class PhonesService {
 
     }
 
-    getPhones(): Observable<Phones[]> {
+    getPhones(): Observable<Phone[]> {
 
         return of(PHONES);
         // return this.http.get<Content[]>(CONTENT)
@@ -109,7 +109,7 @@ export class PhonesService {
         //   );
     }
 
-    getPhonesbyId(id): Observable<Phones[]> {
+    getPhonesbyId(id): Observable<Phone[]> {
         return of(PHONES).pipe(
             map(phones => phones.filter(phone => phone.id === id))
         );
