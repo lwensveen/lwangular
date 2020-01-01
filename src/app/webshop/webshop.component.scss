@@ -7,15 +7,33 @@
     background-size: cover;
 }
 
+.background {
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.promo-section {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+
+    button {
+        margin: 0 20px;
+    }
+}
+
 .banner {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     background-color: #000;
 
     .banner-header {
         color: #fff;
     }
-}
-
-.promo-section {
-    background-color: grey;
-    padding: 20px 0;
 }

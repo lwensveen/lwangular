@@ -7,8 +7,14 @@
 }
 
 html, body {
+    display: flex;
+    flex-direction: column;
     height: 100%;
     font-weight: 300;
+}
+
+app-root {
+    height: 100%;
 }
 
 h1, h2, h3, h4, h5, h6, .mat-card-title, .mat-toolbar {
@@ -17,9 +23,24 @@ h1, h2, h3, h4, h5, h6, .mat-card-title, .mat-toolbar {
 
 app-csv-upload {
     align-items: center;
+    background-color: #759BA4;
     display: flex;
     height: calc(100% - 79px - 50px);
     justify-content: center;
+}
+
+app-webshop {
+    background-color: #759BA4;
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 79px - 50px);
+}
+
+app-detail {
+    background-color: #759BA4;
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 79px - 50px);
 }
 
 .test {

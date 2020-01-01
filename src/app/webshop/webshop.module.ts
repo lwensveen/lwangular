@@ -15,6 +15,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { DetailComponent } from './shop/detail/detail.component';
 import { ShoppingCartComponent } from './shop/shoppingcart/shoppingcart.component';
+import { MatRadioModule } from '@angular/material/radio';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [WebshopComponent, ShopComponent, DetailComponent, ShoppingCartComponent],
@@ -29,6 +31,8 @@ import { ShoppingCartComponent } from './shop/shoppingcart/shoppingcart.componen
         MatIconModule,
         MatInputModule,
         MatListModule,
+        MatRadioModule,
+        ReactiveFormsModule,
         WebshopRoutingModule,
     ]
 })
