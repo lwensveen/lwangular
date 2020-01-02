@@ -3,28 +3,26 @@ import { Observable } from 'rxjs';
 import { Phone } from './phones';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
     providedIn: 'root'
 })
 export class PhonesService {
-    baseUrl = 'http://localhost:5000';
+    baseUrl = `${environment.backendUrl}`;
 
     constructor(private http: HttpClient) {
-
     }
 
     getPhones(): Observable<Phone[]> {
-        return this.http.get<Phone[]>(this.baseUrl + '/api/phones')
-            .pipe(
-                map(response => response),
-            );
+        return this.http.get<Phone[]>(this.baseUrl + '/api/phones').pipe(
+            map(response => response),
+        );
     }
 
     getPhonebyId(id): Observable<Phone> {
-        return this.http.get<Phone>(this.baseUrl + '/api/phones' + id)
-            .pipe(
-                map(response => response),
-            );
+        return this.http.get<Phone>(this.baseUrl + '/api/phones' + id).pipe(
+            map(response => response),
+        );
     }
 }
