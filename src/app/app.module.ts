@@ -12,11 +12,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { CsvUploadComponent } from './csv-upload/csv-upload.component';
-import { MatInputModule } from "@angular/material/input";
+import { MatInputModule } from '@angular/material/input';
+import { InterceptorService } from './services/interceptor.service';
 
 @NgModule({
     declarations: [
@@ -40,7 +41,13 @@ import { MatInputModule } from "@angular/material/input";
         MatToolbarModule,
         MatInputModule,
     ],
-    providers: [],
+    providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: InterceptorService,
+            multi: true
+        }
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {

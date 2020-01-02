@@ -24,7 +24,7 @@ export class DetailComponent implements OnInit {
     ngOnInit() {
         const id = +this.route.snapshot.paramMap.get('id');
 
-        this.$phonesService.getPhonesbyId(id).subscribe(phone => this.phone = phone[0]);
+        this.$phonesService.getPhonebyId(id).subscribe(phone => this.phone = phone[0]);
 
         this.myForm = this.fb.group({
             contractDuration: ['1'],

@@ -1,13 +1,13 @@
 export class Phone {
-    id: number;
-    title: string;
-    subtitle: string | null;
     brand: string;
-    os: string;
-    img: string;
-    colors: Colors[];
     bulletpoints: Bulletpoints[];
+    colors: Colors[];
     content: string;
+    id: number;
+    img: string;
+    model: string;
+    os: string;
+    storage: string;
 }
 
 export class Bulletpoints {
