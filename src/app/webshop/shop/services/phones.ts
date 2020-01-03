@@ -2,6 +2,7 @@ export class Phone {
     brand: string;
     bulletpoints: Bulletpoints[];
     colors: Colors[];
+    title: string;
     content: string;
     id: number;
     img: string;

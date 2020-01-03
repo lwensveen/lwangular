@@ -1,6 +1,6 @@
 <div class="detail">
     <div class="choices">
-        <h2>{{phone.title}}</h2>
+        <mat-toolbar class="shop-toolbar">{{phone.title}}</mat-toolbar>
         <mat-accordion class="example-headers-align" multi="true" [formGroup]="myForm">
             <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
                 <mat-expansion-panel-header>
@@ -54,7 +54,7 @@
             <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
                 <mat-expansion-panel-header>
                     <mat-panel-title>
-                        Day of the trip
+                        Internet
                     </mat-panel-title>
                 </mat-expansion-panel-header>
 

@@ -21,7 +21,7 @@ export class PhonesService {
     }
 
     getPhonebyId(id): Observable<Phone> {
-        return this.http.get<Phone>(this.baseUrl + '/api/phones' + id).pipe(
+        return this.http.get<Phone>(this.baseUrl + '/api/phones/' + id).pipe(
             map(response => response),
         );
     }
