@@ -1,11 +1,4 @@
-header {
-    display: flex;
-    flex-direction: row;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+.header {
+    background-color: #fff;
     justify-content: space-between;
-    padding: 0 40px;
-
-    nav {
-        align-self: center;
-    }
 }
