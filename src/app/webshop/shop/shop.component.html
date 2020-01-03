@@ -2,7 +2,6 @@
     <h1>Alle telefoons</h1>
     <span>Hier vindt u alle telefoons</span>
 
-
     <div class="phone-list" *ngIf="($brands || $operatingSystem)">
         <div class="filters">
             <h2>Filters</h2>
@@ -51,9 +50,9 @@
             </mat-accordion>
         </div>
 
-        <div class="test-list" *ngIf="($phonesSubject | async) as phones">
+        <div class="test-list">
             <h2>Telefoons</h2>
-            <div class="phones">
+            <div class="phones" *ngIf="($phonesSubject | async) as phones">
 
                 <mat-card *ngFor="let phone of phones" class="phone"
                           [routerLink]="['product', fixUrl(phone.title),  phone.id]">
@@ -65,7 +64,7 @@
 
                     <img mat-card-image src="{{phone.img}}" alt="{{phone.title}}">
 
-                    <mat-chip-list fxFlexAlign="center">
+                    <mat-chip-list>
                         <mat-chip *ngFor="let color of phone.colors"
                                   [ngStyle]="{backgroundColor: color.color}">{{color.color}}</mat-chip>
                     </mat-chip-list>
