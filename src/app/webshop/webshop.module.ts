@@ -17,10 +17,15 @@ import { DetailComponent } from './shop/detail/detail.component';
 import { ShoppingCartComponent } from './shop/shoppingcart/shoppingcart.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatProgressSpinnerModule } from '@angular/material';
+import { MatProgressSpinnerModule, MatToolbarModule } from '@angular/material';
 
 @NgModule({
-    declarations: [WebshopComponent, ShopComponent, DetailComponent, ShoppingCartComponent],
+    declarations: [
+        WebshopComponent,
+        ShopComponent,
+        DetailComponent,
+        ShoppingCartComponent
+    ],
     imports: [
         CommonModule,
         MatButtonModule,
@@ -32,10 +37,11 @@ import { MatProgressSpinnerModule } from '@angular/material';
         MatIconModule,
         MatInputModule,
         MatListModule,
+        MatProgressSpinnerModule,
         MatRadioModule,
+        MatToolbarModule,
         ReactiveFormsModule,
         WebshopRoutingModule,
-        MatProgressSpinnerModule,
     ]
 })
 export class WebshopModule {

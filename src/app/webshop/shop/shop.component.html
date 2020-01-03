@@ -1,12 +1,10 @@
 <div class="overview">
-    <h1>Alle telefoons</h1>
-    <span>Hier vindt u alle telefoons</span>
+    <mat-toolbar class="shop-toolbar">Alle telefoons</mat-toolbar>
 
     <div class="phone-list" *ngIf="($brands || $operatingSystem)">
         <div class="filters">
-            <h2>Filters</h2>
+            <mat-toolbar class="shop-toolbar">Filters</mat-toolbar>
             <mat-accordion>
-
                 <mat-expansion-panel [expanded]="true">
                     <mat-expansion-panel-header>
                         <mat-panel-title>
@@ -51,7 +49,7 @@
         </div>
 
         <div class="test-list">
-            <h2>Telefoons</h2>
+            <mat-toolbar class="shop-toolbar">Telefoons</mat-toolbar>
             <div class="phones" *ngIf="($phonesSubject | async) as phones; else loading">
 
                 <mat-card *ngFor="let phone of phones" class="phone"
