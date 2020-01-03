@@ -43,6 +43,11 @@ app-detail {
     height: calc(100% - 64px - 50px);
 }
 
+.img-responsive {
+    height: auto;
+    width: 100%;
+}
+
 .test {
     color: red;
     &.test2 {
