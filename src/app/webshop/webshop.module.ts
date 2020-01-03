@@ -17,6 +17,7 @@ import { DetailComponent } from './shop/detail/detail.component';
 import { ShoppingCartComponent } from './shop/shoppingcart/shoppingcart.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatProgressSpinnerModule } from '@angular/material';
 
 @NgModule({
     declarations: [WebshopComponent, ShopComponent, DetailComponent, ShoppingCartComponent],
@@ -34,6 +35,7 @@ import { ReactiveFormsModule } from '@angular/forms';
         MatRadioModule,
         ReactiveFormsModule,
         WebshopRoutingModule,
+        MatProgressSpinnerModule,
     ]
 })
 export class WebshopModule {

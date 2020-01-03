@@ -52,7 +52,7 @@
 
         <div class="test-list">
             <h2>Telefoons</h2>
-            <div class="phones" *ngIf="($phonesSubject | async) as phones">
+            <div class="phones" *ngIf="($phonesSubject | async) as phones; else loading">
 
                 <mat-card *ngFor="let phone of phones" class="phone"
                           [routerLink]="['product', fixUrl(phone.title),  phone.id]">
@@ -80,6 +80,9 @@
                 </mat-card>
 
             </div>
+            <ng-template #loading>
+                <mat-spinner></mat-spinner>
+            </ng-template>
         </div>
     </div>
 
