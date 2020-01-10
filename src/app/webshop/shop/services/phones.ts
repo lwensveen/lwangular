@@ -1,4 +1,4 @@
-export class Phone {
+export interface Phone {
     model: string;
     brand: string;
     bulletpoints: Bulletpoints[];
@@ -8,13 +8,14 @@ export class Phone {
     id: number;
     img: string;
     os: string;
+    price: number;
     storage: string;
 }
 
-export class Bulletpoints {
+export interface Bulletpoints {
     point: string;
 }
 
-export class Colors {
+export interface Colors {
     color: string;
 }
