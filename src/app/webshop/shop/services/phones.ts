@@ -1,4 +1,5 @@
 export class Phone {
+    model: string;
     brand: string;
     bulletpoints: Bulletpoints[];
     colors: Colors[];
@@ -6,7 +7,6 @@ export class Phone {
     content: string;
     id: number;
     img: string;
-    model: string;
     os: string;
     storage: string;
 }

@@ -20,8 +20,8 @@ export class PhonesService {
         );
     }
 
-    getPhonebyId(id): Observable<Phone> {
-        return this.http.get<Phone>(this.baseUrl + '/api/phones/' + id).pipe(
+    getPhonebyId(title, id): Observable<Phone> {
+        return this.http.get<Phone>(this.baseUrl + '/api/phones/' + title + '/' + id).pipe(
             map(response => response),
         );
     }
