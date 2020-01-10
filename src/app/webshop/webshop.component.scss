@@ -1,20 +1,26 @@
 .promo-section {
     align-items: center;
+    background-color: lightgrey;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
-    flex: 1;
+    padding: 20px 0;
 
     button {
         margin: 0 20px;
     }
 }
 
+.banner {
+    display: flex;
+}
+
 .background {
     align-items: center;
-    background-color: #fff;
     display: flex;
     flex-direction: row;
-    flex: 3;
+    flex-wrap: wrap;
     justify-content: center;
+    padding: 40px 0;
 }

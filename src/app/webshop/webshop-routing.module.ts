@@ -1,17 +1,22 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { WebshopComponent } from './webshop.component';
 import { ShopComponent } from './shop/shop.component';
 import { DetailComponent } from './shop/detail/detail.component';
 import { ShoppingCartComponent } from './shop/shoppingcart/shoppingcart.component';
+import { CustomerDetailsComponent } from './shop/customer-details/customer-details.component';
 
 const routes: Routes = [
     {
-        path: 'shop/bestellen/mijn-gegevens',
+        path: 'shop/customer-details',
+        component: CustomerDetailsComponent
+    },
+    {
+        path: 'shop/mijn-gegevens',
         component: DetailComponent
     },
     {
-        path: 'shop/bestellen/winkelwagen',
+        path: 'shop/shoppingcart',
         component: ShoppingCartComponent
     },
     {
@@ -29,7 +34,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule]
 })
-export class WebshopRoutingModule { }
+export class WebshopRoutingModule {
+}
