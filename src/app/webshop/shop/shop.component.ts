@@ -15,7 +15,7 @@ import { MatCheckboxChange } from '@angular/material/checkbox';
     styleUrls: ['./shop.component.scss']
 })
 export class ShopComponent implements OnInit, OnDestroy {
-    $phonesSubject = new BehaviorSubject(null);
+    $phonesSubject = new BehaviorSubject<Phone[]>(null);
     $brands: Observable<Brands[]>;
     $handleBrands = new Subject();
     $operatingSystem: Observable<OperatingSystem[]>;
@@ -60,7 +60,7 @@ export class ShopComponent implements OnInit, OnDestroy {
                 if (evt.checked === true) {
                     this.$phonesSubject.pipe(
                         take(1),
-                        map(phones => phones.filter(phone => phone.os === evt.source.value)),
+                        map((phones: Phone[]) => phones.filter(phone => phone.os === evt.source.value)),
                     ).subscribe(val => {
                         this.$phonesSubject.next(val);
                     });
@@ -71,11 +71,10 @@ export class ShopComponent implements OnInit, OnDestroy {
 
             })
         );
-
     }
 
     fixUrl(url) {
-        return url.split(' ').join('-').toLowerCase();
+        return url.replace(/\s/g, '');
     }
 
     getContent(): void {

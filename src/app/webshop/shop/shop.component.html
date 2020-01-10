@@ -53,11 +53,11 @@
             <div class="phones" *ngIf="($phonesSubject | async) as phones; else loading">
 
                 <mat-card *ngFor="let phone of phones" class="phone"
-                          [routerLink]="['product', fixUrl(phone.title),  phone.id]">
+                          [routerLink]="['product', fixUrl(phone.brand + phone.model),  phone.id]">
 
                     <mat-card-header>
-                        <mat-card-title>{{phone.title}}</mat-card-title>
-                        <mat-card-subtitle>{{phone.subtitle}}</mat-card-subtitle>
+                        <mat-card-title>{{phone.brand}}</mat-card-title>
+                        <mat-card-subtitle>{{phone.model}}</mat-card-subtitle>
                     </mat-card-header>
 
                     <img mat-card-image src="{{phone.img}}" alt="{{phone.title}}">
@@ -68,7 +68,7 @@
                     </mat-chip-list>
 
                     <mat-card-content>
-                        <h3>€ 46,50</h3>
+                        <h3>{{phone.price | currency}}</h3>
                         <p>Bijbetaling toestel € 59,00 excl. eenmalige kosten 5 GB + 120 min. bellen</p>
                     </mat-card-content>
 
