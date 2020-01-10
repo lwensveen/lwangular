@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +18,10 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { CsvUploadComponent } from './csv-upload/csv-upload.component';
 import { MatInputModule } from '@angular/material/input';
 import { InterceptorService } from './services/interceptor.service';
+import { registerLocaleData } from '@angular/common';
+import localeNl from '@angular/common/locales/nl';
+
+registerLocaleData(localeNl);
 
 @NgModule({
     declarations: [
@@ -42,6 +46,10 @@ import { InterceptorService } from './services/interceptor.service';
         MatInputModule,
     ],
     providers: [
+        {
+            provide: LOCALE_ID,
+            useValue: 'nl',
+        },
         {
             provide: HTTP_INTERCEPTORS,
             useClass: InterceptorService,
