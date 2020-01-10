@@ -1,0 +1,44 @@
+<mat-card>
+    <mat-card-content>
+        <form class="form" [formGroup]="customerDetails">
+            <h2>Type order</h2>
+            <mat-radio-group formControlName="typeOrder">
+                <mat-radio-button value="consumer">consumer</mat-radio-button>
+                <mat-radio-button value="business">business</mat-radio-button>
+            </mat-radio-group>
+
+            <h2>Mijn gegevens</h2>
+            <mat-radio-group formControlName="gender">
+                <mat-radio-button value="Dhr.">Dhr.</mat-radio-button>
+                <mat-radio-button value="Mevr.">Mevr.</mat-radio-button>
+            </mat-radio-group>
+            <mat-form-field>
+                <input matInput formControlName="firstName" placeholder="First name">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput formControlName="lastName" placeholder="Last name">
+            </mat-form-field>
+
+            <div formGroupName="dob">
+                <mat-form-field>
+                    <input matInput formControlName="day" placeholder="DD">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput formControlName="month" placeholder="MM">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput formControlName="year" placeholder="YYYY">
+                </mat-form-field>
+            </div>
+
+            <mat-form-field>
+                <input matInput formControlName="mobile" placeholder="Phone number">
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput formControlName="email" placeholder="Email">
+            </mat-form-field>
+
+        </form>
+    </mat-card-content>
+</mat-card>
