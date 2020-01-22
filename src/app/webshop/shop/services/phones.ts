@@ -6,7 +6,7 @@ export interface Phone {
     title: string;
     content: string;
     id: number;
-    img: string;
+    images: ImageSides;
     os: string;
     price: number;
     storage: string;
@@ -16,6 +16,11 @@ export interface Bulletpoints {
     point: string;
 }
 
+export interface ImageSides {
+    front: string;
+    side: string;
+    back: string;
+}
 export interface Colors {
     color: string;
 }
