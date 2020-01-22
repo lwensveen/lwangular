@@ -21,6 +21,9 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
-    padding: 40px 0;
+
+    .mat-list-base {
+        flex: 1;
+        padding: 30px;
+    }
 }
