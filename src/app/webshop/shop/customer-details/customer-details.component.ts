@@ -1,35 +1,41 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-customer-details',
     templateUrl: './customer-details.component.html',
     styleUrls: ['./customer-details.component.scss']
 })
-export class CustomerDetailsComponent implements OnInit {
+export class CustomerDetailsComponent {
     customerDetails = this.formBuilder.group({
-        typeOrder: [''],
-        gender: [''],
-        firstName: [''],
-        lastName: [''],
-        mobile: [''],
-        email: [''],
+        typeOrder: ['', Validators.required],
+        gender: ['', Validators.required],
+        firstName: ['', Validators.required],
+        lastName: ['', Validators.required],
+        mobile: ['', Validators.required],
+        email: ['', [Validators.email, Validators.required]],
         dob: this.formBuilder.group({
-            day: [''],
-            month: [''],
-            year: [''],
+            day: ['', [Validators.minLength(2), Validators.maxLength(2), Validators.required]],
+            month: ['', [Validators.minLength(2), Validators.maxLength(2), Validators.required]],
+            year: ['', [Validators.minLength(4), Validators.maxLength(4), Validators.required]],
         }),
         address: this.formBuilder.group({
-            street: [''],
-            city: [''],
+            street: ['', Validators.required],
+            houseNumber: ['', Validators.required],
+            city: ['', Validators.required],
             state: [''],
-            zip: ['']
+            zipcode: ['', Validators.required],
         }),
     });
 
-    constructor(private formBuilder: FormBuilder) {
+    constructor(
+        private formBuilder: FormBuilder,
+        private router: Router,
+    ) {
     }
 
-    ngOnInit() {
+    onSubmit() {
+        console.warn(this.customerDetails.value);
     }
 }

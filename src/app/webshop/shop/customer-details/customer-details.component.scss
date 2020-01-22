@@ -1,4 +1,17 @@
-.form {
+.mat-card {
     display: flex;
     flex-direction: column;
+
+    .mat-form-field {
+        margin-right: 20px;
+    }
+
+    .mat-divider {
+        position: relative;
+        margin-top: 20px;
+    }
+
+    .mat-radio-button {
+        margin-right: 10px;
+    }
 }

@@ -1,17 +1,22 @@
 <mat-card>
-    <mat-card-content>
-        <form class="form" [formGroup]="customerDetails">
+    <form [formGroup]="customerDetails" (ngSubmit)="onSubmit()">
+        <mat-card-content>
             <h2>Type order</h2>
             <mat-radio-group formControlName="typeOrder">
-                <mat-radio-button value="consumer">consumer</mat-radio-button>
-                <mat-radio-button value="business">business</mat-radio-button>
+                <mat-radio-button value="consumer">Consumer</mat-radio-button>
+                <mat-radio-button value="business">Business</mat-radio-button>
             </mat-radio-group>
 
-            <h2>Mijn gegevens</h2>
+            <mat-divider></mat-divider>
+
+            <h2>Your details</h2>
             <mat-radio-group formControlName="gender">
-                <mat-radio-button value="Dhr.">Dhr.</mat-radio-button>
-                <mat-radio-button value="Mevr.">Mevr.</mat-radio-button>
+                <mat-radio-button value="Mr.">Mr.</mat-radio-button>
+                <mat-radio-button value="Mrs.">Mrs.</mat-radio-button>
             </mat-radio-group>
+
+            <mat-divider></mat-divider>
+
             <mat-form-field>
                 <input matInput formControlName="firstName" placeholder="First name">
             </mat-form-field>
@@ -19,7 +24,7 @@
                 <input matInput formControlName="lastName" placeholder="Last name">
             </mat-form-field>
 
-            <div formGroupName="dob">
+            <div class="dob" formGroupName="dob">
                 <mat-form-field>
                     <input matInput formControlName="day" placeholder="DD">
                 </mat-form-field>
@@ -39,6 +44,31 @@
                 <input matInput formControlName="email" placeholder="Email">
             </mat-form-field>
 
-        </form>
-    </mat-card-content>
+            <div class="address" formGroupName="address">
+                <mat-form-field>
+                    <input matInput formControlName="zipcode" placeholder="Zipcode">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput formControlName="houseNumber" placeholder="Number">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput formControlName="street" placeholder="Street">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput formControlName="state" placeholder="State">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput formControlName="city" placeholder="City">
+                </mat-form-field>
+
+            </div>
+        </mat-card-content>
+        <mat-card-actions align="end">
+            <button type="submit" [disabled]="!customerDetails.valid" mat-flat-button color="primary">Next step</button>
+        </mat-card-actions>
+    </form>
 </mat-card>
