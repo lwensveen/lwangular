@@ -54,27 +54,25 @@
 
                 <mat-card *ngFor="let phone of phones" class="phone"
                           [routerLink]="['product', fixUrl(phone.brand + phone.model),  phone.id]">
+                    <mat-card-header></mat-card-header>
 
-                    <mat-card-header>
-                        <mat-card-title>{{phone.brand}}</mat-card-title>
-                        <mat-card-subtitle>{{phone.model}}</mat-card-subtitle>
-                    </mat-card-header>
-
-                    <img mat-card-image src="{{phone.img}}" alt="{{phone.title}}">
+                    <img mat-card-image src="{{phone.images.front}}" alt="Front">
 
                     <mat-chip-list>
                         <mat-chip *ngFor="let color of phone.colors"
-                                  [ngStyle]="{backgroundColor: color.color}">{{color.color}}</mat-chip>
+                                  [ngStyle]="{backgroundColor: color.color}"></mat-chip>
                     </mat-chip-list>
 
-                    <mat-card-content>
-                        <h3>{{phone.price | currency}}</h3>
-                        <p>Bijbetaling toestel € 59,00 excl. eenmalige kosten 5 GB + 120 min. bellen</p>
-                    </mat-card-content>
+                    <mat-card-header>
+                        <mat-card-title>{{phone.brand}}</mat-card-title>
+                        <mat-card-subtitle>{{phone.model}} {{phone.storage}}</mat-card-subtitle>
+                    </mat-card-header>
 
-                    <mat-card-actions>
-                        <button mat-flat-button color="primary">Kiezen</button>
-                    </mat-card-actions>
+                    <mat-card-content>
+                        <h2 class="mat-body-strong">{{48.00 | currency}} a month</h2>
+                        <p class="mat-caption">Bijbetaling toestel € 59,00 excl. eenmalige kosten 5 GB + 120 min.
+                            bellen</p>
+                    </mat-card-content>
                 </mat-card>
 
             </div>
