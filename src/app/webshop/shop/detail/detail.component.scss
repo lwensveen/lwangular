@@ -40,32 +40,60 @@
     }
 
     .receipt {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
         .views {
             margin: 20px 0;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
 
-            button:not(:last-child) {
-                margin-right: 10px;
+            button {
+                padding-top: 20px;
+                padding-bottom: 20px;
+
+                img {
+                    height: 50px;
+                    width: auto;;
+                }
+
+                &:not(:last-child) {
+                    margin-right: 10px;
+                }
             }
         }
 
         .color-options {
-
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
         }
 
         .mat-card {
-            width: 250px;
 
             .mat-card-content {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
+
+                .mat-card-title {
+                    &.one-time-costs {
+                        margin-top: 20px;
+                    }
+                }
+                .section {
+                    padding: 10px 0;
+
+                    .row {
+                        padding: 5px 0;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-between;
+                    }
+                }
 
             }
         }
 
     }
+}
+
+.mat-spinner {
+    align-self: center;
 }

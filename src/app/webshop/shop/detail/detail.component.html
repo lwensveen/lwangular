@@ -1,7 +1,7 @@
-<div class="detail">
+<form class="detail" *ngIf="phone; else loading" [formGroup]="contractForm" (ngSubmit)="onSubmit()">
     <div class="choices">
-        <mat-toolbar class="shop-toolbar">{{phone.title}}</mat-toolbar>
-        <mat-accordion class="example-headers-align" multi="true" [formGroup]="myForm">
+        <mat-toolbar class="shop-toolbar">{{phone.brand}} {{phone.model}}</mat-toolbar>
+        <mat-accordion class="example-headers-align" multi="true" >
             <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
                 <mat-expansion-panel-header>
                     <mat-panel-title>
@@ -9,27 +9,13 @@
                     </mat-panel-title>
                 </mat-expansion-panel-header>
 
-<!--                <mat-form-field>-->
-<!--                    <label>-->
-<!--                        <input type="radio" value="Male" formControlName="duration">-->
-<!--                        <span>male</span>-->
-<!--                    </label>-->
-<!--                    <label>-->
-<!--                        <input type="radio" value="Female" formControlName="duration">-->
-<!--                        <span>female</span>-->
-<!--                    </label>-->
-<!--                    -->
-<!--                    <input matInput formControlName="options">-->
-
-<!--                </mat-form-field>-->
-
                 <mat-radio-group aria-label="Select an option" formControlName="contractDuration">
                     <mat-radio-button value="1">1 year</mat-radio-button>
                     <mat-radio-button value="2">2 years</mat-radio-button>
                 </mat-radio-group>
 
                 <mat-action-row>
-                    <button mat-flat-button color="primary" (click)="nextStep()">Next</button>
+                    <button mat-flat-button color="primary" type="button" (click)="nextStep()">Next</button>
                 </mat-action-row>
             </mat-expansion-panel>
 
@@ -46,8 +32,8 @@
                 </mat-radio-group>
 
                 <mat-action-row>
-                    <button mat-flat-button color="warn" (click)="prevStep()">Previous</button>
-                    <button mat-flat-button color="primary" (click)="nextStep()">Next</button>
+                    <button mat-flat-button color="warn" type="button" (click)="prevStep()">Previous</button>
+                    <button mat-flat-button color="primary" type="button" (click)="nextStep()">Next</button>
                 </mat-action-row>
             </mat-expansion-panel>
 
@@ -59,13 +45,15 @@
                 </mat-expansion-panel-header>
 
                 <mat-radio-group class="dkwoa" aria-label="Select an option" formControlName="contractBundles">
-                    <mat-radio-button value="1">1 GB + 120 min. bellen<span class="price">€ 13,50</span></mat-radio-button>
-                    <mat-radio-button value="2">5 GB + 120 min. bellen<span class="price">€ 17,50</span></mat-radio-button>
+                    <mat-radio-button value="1">1 GB + 120 min. bellen<span class="price">€ 13,50</span>
+                    </mat-radio-button>
+                    <mat-radio-button value="2">5 GB + 120 min. bellen<span class="price">€ 17,50</span>
+                    </mat-radio-button>
                 </mat-radio-group>
 
                 <mat-action-row>
-                    <button mat-flat-button color="warn" (click)="prevStep()">Previous</button>
-                    <button mat-flat-button color="primary" (click)="nextStep()">End</button>
+                    <button mat-flat-button color="warn" type="button" (click)="prevStep()">Previous</button>
+                    <button mat-flat-button color="primary" type="button" (click)="nextStep()">End</button>
                 </mat-action-row>
             </mat-expansion-panel>
 
@@ -73,34 +61,83 @@
     </div>
 
     <div class="receipt">
-        <img src="{{phone.img}}" alt="{{phone.title}}">
+        <img src="{{swapImage}}" alt="{{phone.title}}">
 
         <div class="views">
-            <button mat-flat-button>test</button>
-            <button mat-flat-button>test</button>
-            <button mat-flat-button>test</button>
+            <button mat-flat-button type="button" (click)="onClick(phone.images.front)"><img src="{{phone.images.front}}" alt="Front">
+            </button>
+            <button mat-flat-button type="button" (click)="onClick(phone.images.side)"><img src="{{phone.images.side}}" alt="Front">
+            </button>
+            <button mat-flat-button type="button" (click)="onClick(phone.images.back)"><img src="{{phone.images.back}}" alt="Front">
+            </button>
         </div>
 
         <mat-card class="color-options">
             <mat-radio-group aria-label="Select an option">
-                <mat-radio-button value="1" checked></mat-radio-button>
-                <mat-radio-button value="2"></mat-radio-button>
-                <mat-radio-button value="2"></mat-radio-button>
-                <mat-radio-button value="2"></mat-radio-button>
-                <mat-radio-button value="2"></mat-radio-button>
+                <mat-radio-button *ngFor="let color of phone.colors" [value]="color"></mat-radio-button>
             </mat-radio-group>
         </mat-card>
 
         <mat-card>
-            <mat-card-title>Receipt</mat-card-title>
+            <mat-card-title>Monthly</mat-card-title>
+            <p>Duration {{contractForm.get('contractDuration').value}}
+                <span *ngIf="contractForm.get('contractDuration').value === '1'; else years">year</span>
+                <ng-template #years>years</ng-template>
+            </p>
             <mat-card-content>
-                <span>Totaal per maand</span>
-                <span>€ 54,00</span>
+                <div class="section">
+                    <div class="row">
+                        <span>5 GB + 120 min. bellen</span>
+                        <span>{{17.50 | currency}}</span>
+                    </div>
+                    <div class="row">
+                        <span>Toestelkrediet</span>
+                        <span>{{25.00 | currency}}</span>
+                    </div>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="section">
+                    <div class="row">
+                        <span class="mat-body-strong">Total each month</span>
+                        <span class="mat-body-strong">{{42.50 | currency}}</span>
+                    </div>
+                    <div class="row">
+                        <span class="mat-body-strong">After contract duration ends</span>
+                        <span>{{17.50 | currency}}</span>
+                    </div>
+                </div>
+                <mat-divider></mat-divider>
+                <mat-card-title class="one-time-costs">One time costs</mat-card-title>
+                <div class="section">
+                    <div class="row">
+                        <span>{{phone.brand}} {{phone.model}} {{phone.storage}} {{this.phone.colors[0].color | titlecase}}</span>
+                        <span>{{17.50 | currency}}</span>
+                    </div>
+                    <div class="row">
+                        <span class="mat-body-strong">Thuiskopieheffing</span>
+                        <span>{{5.69 | currency}}</span>
+                    </div>
+                    <div class="row">
+                        <span class="mat-body-strong">Contract costs</span>
+                        <span>{{25.00 | currency}}</span>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <div class="section">
+                        <div class="row mat-body-strong">
+                            <span>Total one time costs</span>
+                            <span>{{30.69 | currency}}</span>
+                        </div>
+                    </div>
+                </div>
             </mat-card-content>
             <mat-card-actions align="end">
-                <button [routerLink]="['/examples/webshop/shop/shoppingcart']" mat-flat-button color="primary">Volgende stap</button>
+                <button type="submit" [disabled]="!contractForm.valid" mat-flat-button color="primary">Next step
+                </button>
             </mat-card-actions>
         </mat-card>
 
     </div>
-</div>
+</form>
+<ng-template #loading>
+    <mat-spinner></mat-spinner>
+</ng-template>

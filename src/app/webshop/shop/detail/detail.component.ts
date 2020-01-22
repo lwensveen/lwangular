@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { PhonesService } from '../services/phones.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Phone } from '../services/phones';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
     selector: 'app-detail',
@@ -11,30 +12,42 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class DetailComponent implements OnInit {
     id: string;
-    myForm: FormGroup;
+    contractForm: FormGroup;
     phone: Phone;
     step = 0;
+    swapImage: string;
     title: string;
 
     constructor(
         private $phonesService: PhonesService,
-        private fb: FormBuilder,
         private activatedRoute: ActivatedRoute,
+        private fb: FormBuilder,
+        private router: Router,
     ) {
     }
 
     ngOnInit() {
-        this.activatedRoute.paramMap.subscribe(params => {
-            this.id = params.get('id');
-            this.title = params.get('title');
+        this.activatedRoute.paramMap.pipe(
+            switchMap(params => this.$phonesService.getPhonebyId(params.get('title'), params.get('id')))
+        ).subscribe(phone => {
+            this.phone = phone;
+            this.swapImage = this.phone.images.front;
         });
 
-        this.$phonesService.getPhonebyId(this.title, this.id).subscribe(phone => this.phone = phone[0]);
-
-        this.myForm = this.fb.group({
-            contractDuration: ['1'],
-            contractMinutes: ['1'],
+        this.contractForm = this.fb.group({
+            contractDuration: ['1', Validators.required],
+            contractMinutes: ['1', Validators.required],
+            contractBundles: ['1', Validators.required],
         });
+    }
+
+    onSubmit() {
+        this.router.navigate(['/examples/webshop/shop/shoppingcart']);
+        console.warn(this.contractForm.value);
+    }
+
+    onClick(imageSrc) {
+        this.swapImage = imageSrc;
     }
 
     setStep(index: number) {
