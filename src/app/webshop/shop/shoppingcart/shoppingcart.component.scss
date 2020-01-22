@@ -1,3 +1,63 @@
-.shoppping-cart {
+.shopping-cart {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: space-between;
     padding: 20px;
+
+    .mat-card-title {
+        margin-bottom: 16px;
+    }
+
+    .mat-card-content {
+        display: flex;
+        flex-direction: row;
+
+        .left {
+            padding: 20px 20px 0 0;
+            display: flex;
+            flex-direction: row;
+            flex: 1;
+        }
+
+        .right {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex: 3;
+            border-left: 1px solid rgba(0, 0, 0, .12);
+
+
+            .mat-card-title {
+                &.one-time-costs {
+                    margin-top: 20px;
+                }
+            }
+
+            .section {
+                padding: 10px 0;
+
+                .row {
+                    padding: 5px 0;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                }
+            }
+
+        }
+    }
+
+    .test-card {
+        margin-top: 20px;
+        max-width: 1000px;
+
+        .text-content {
+            > div {
+                padding: 0 20px;
+            }
+        }
+    }
+
 }

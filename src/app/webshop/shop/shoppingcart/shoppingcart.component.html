@@ -1,9 +1,93 @@
-<div class="shoppping-cart">
+<div class="shopping-cart">
     <mat-card>
+        <mat-card-title>My shoppingcart</mat-card-title>
+        <mat-divider></mat-divider>
         <mat-card-content>
+            <div class="left">
+                <img
+                    src="http://webshop-env-prod.gfz3ypkeuu.eu-west-1.elasticbeanstalk.com/images/webshop/samsung/dvi-front_Samsung_S10_Blue_305x450.png"
+                    alt="Phone">
+                <ul>
+                    <li>Abonnement Go</li>
+                </ul>
+            </div>
+            <div class="right">
+                <div class="section">
+                    <div class="row">
+                        <span>5 GB + 120 min. bellen</span>
+                        <span>{{17.50 | currency}}</span>
+                    </div>
+                    <div class="row">
+                        <span>Toestelkrediet</span>
+                        <span>{{25.00 | currency}}</span>
+                    </div>
+                </div>
+                <mat-divider inset></mat-divider>
+                <div class="section">
+                    <div class="row">
+                        <span class="mat-body-strong">Total each month</span>
+                        <span class="mat-body-strong">{{42.50 | currency}}</span>
+                    </div>
+                    <div class="row">
+                        <span class="mat-body-strong">After contract duration ends</span>
+                        <span>{{17.50 | currency}}</span>
+                    </div>
+                </div>
+                <mat-divider inset></mat-divider>
+                <mat-card-title class="one-time-costs">One time costs</mat-card-title>
+                <div class="section">
+                    <div class="row">
+<!--                        <span>{{phone.brand}} {{phone.model}} {{phone.storage}} {{this.phone.colors[0].color | titlecase}}</span>-->
+                        <span>{{17.50 | currency}}</span>
+                    </div>
+                    <div class="row">
+                        <span class="mat-body-strong">Thuiskopieheffing</span>
+                        <span>{{5.69 | currency}}</span>
+                    </div>
+                    <div class="row">
+                        <span class="mat-body-strong">Contract costs</span>
+                        <span>{{25.00 | currency}}</span>
+                    </div>
+                    <mat-divider inset></mat-divider>
+                    <div class="section">
+                        <div class="row mat-body-strong">
+                            <span>Total one time costs</span>
+                            <span>{{30.69 | currency}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </mat-card-content>
-        <mat-card-actions>
-            <button [routerLink]="['/examples/webshop/shop/customer-details']">Next</button>
+        <mat-card-actions align="end">
+            <button mat-flat-button color="primary" [routerLink]="['/examples/webshop/shop/customer-details']">Next
+            </button>
         </mat-card-actions>
+    </mat-card>
+
+    <mat-card class="test-card">
+        <mat-card-header>
+            <mat-card-title>
+                Vragen
+            </mat-card-title>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-content class="text-content">
+          <div>
+              <h2>Gratis nummerbehoud</h2>
+              <p>Nummerbehoud regel je eenvoudig na het plaatsen van je bestelling.</p>
+          </div>
+
+            <div>
+                <h2>Bezorgen of ophalen</h2>
+                <p>Gratis van maandag tot en met vrijdag of als je de bestelling ophaalt in een T-Mobile winkel.</p>
+                <a [routerLink]="[]">Meer informatie</a>
+            </div>
+
+            <div>
+                <h2>Annuleren en retourneren</h2>
+                <p>Niet tevreden? Je kunt je bestelling binnen 15 dagen annuleren.</p>
+                <a [routerLink]="[]">Meer informatie</a>
+            </div>
+        </mat-card-content>
     </mat-card>
 </div>
