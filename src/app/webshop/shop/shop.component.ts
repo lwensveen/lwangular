@@ -61,8 +61,8 @@ export class ShopComponent implements OnInit, OnDestroy {
                     this.$phonesSubject.pipe(
                         take(1),
                         map((phones: Phone[]) => phones.filter(phone => phone.os === evt.source.value)),
-                    ).subscribe(val => {
-                        this.$phonesSubject.next(val);
+                    ).subscribe(phones => {
+                        this.$phonesSubject.next(phones);
                     });
                     return;
                 }
