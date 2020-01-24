@@ -5,7 +5,7 @@ import { Brands } from './services/brands';
 import { BrandsService } from './services/brands.service';
 import { OperatingSystem } from './services/operatingSystem';
 import { OperatingSystemService } from './services/operating-system.service';
-import { distinctUntilChanged, map, take } from 'rxjs/operators';
+import { distinctUntilChanged, filter, map, mergeMap, take } from 'rxjs/operators';
 import { Phone } from './services/phones';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 
@@ -42,8 +42,8 @@ export class ShopComponent implements OnInit, OnDestroy {
                     this.$phonesSubject.pipe(
                         take(1),
                         map(phones => phones.filter(phone => phone.brand === evt.source.value)),
-                    ).subscribe(val => {
-                        this.$phonesSubject.next(val);
+                    ).subscribe(phones => {
+                         this.$phonesSubject.next(phones);
                     });
                     return;
                 }
@@ -68,7 +68,6 @@ export class ShopComponent implements OnInit, OnDestroy {
                 }
 
                 return this.$phonesSubject.next(this.phones);
-
             })
         );
     }
