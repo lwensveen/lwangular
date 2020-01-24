@@ -1,7 +1,7 @@
 <form class="detail" *ngIf="phone; else loading" [formGroup]="contractForm" (ngSubmit)="onSubmit()">
     <div class="choices">
         <mat-toolbar class="shop-toolbar">{{phone.brand}} {{phone.model}}</mat-toolbar>
-        <mat-accordion class="example-headers-align" multi="true" >
+        <mat-accordion class="example-headers-align" multi="true">
             <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
                 <mat-expansion-panel-header>
                     <mat-panel-title>
@@ -10,8 +10,9 @@
                 </mat-expansion-panel-header>
 
                 <mat-radio-group aria-label="Select an option" formControlName="contractDuration">
-                    <mat-radio-button value="1">1 year</mat-radio-button>
-                    <mat-radio-button value="2">2 years</mat-radio-button>
+                    <mat-radio-button *ngFor="let duration of durations"
+                                      value="{{duration.duration}} | {{duration.price}}">{{duration.duration}} year
+                    </mat-radio-button>
                 </mat-radio-group>
 
                 <mat-action-row>
@@ -27,8 +28,8 @@
                 </mat-expansion-panel-header>
 
                 <mat-radio-group aria-label="Select an option" formControlName="contractMinutes">
-                    <mat-radio-button value="1">Unlimited</mat-radio-button>
-                    <mat-radio-button value="2">120 mins</mat-radio-button>
+                    <mat-radio-button *ngFor="let minute of minutes"
+                                      value="{{minute.minute}} | {{minute.price}}">{{minute.minute}}</mat-radio-button>
                 </mat-radio-group>
 
                 <mat-action-row>
@@ -44,10 +45,10 @@
                     </mat-panel-title>
                 </mat-expansion-panel-header>
 
-                <mat-radio-group class="dkwoa" aria-label="Select an option" formControlName="contractBundles">
-                    <mat-radio-button value="1">1 GB + 120 min. bellen<span class="price">€ 13,50</span>
-                    </mat-radio-button>
-                    <mat-radio-button value="2">5 GB + 120 min. bellen<span class="price">€ 17,50</span>
+                <mat-radio-group class="dkwoa" aria-label="Select an option" formControlName="contractInternet">
+                    <mat-radio-button *ngFor="let internet of internet" value="{{internet.internet}} | {{internet.price}}">
+                        {{internet.internet}} + {{this.contractMinutes.minutes}}
+                        <span class="price">{{parseInt(internet.price) + this.contractMinutes.price + this.contractDuration.price | currency}}</span>
                     </mat-radio-button>
                 </mat-radio-group>
 
@@ -64,11 +65,14 @@
         <img src="{{swapImage}}" alt="{{phone.title}}">
 
         <div class="views">
-            <button mat-flat-button type="button" (click)="onClick(phone.images.front)"><img src="{{phone.images.front}}" alt="Front">
+            <button mat-flat-button type="button" (click)="onClick(phone.images.front)"><img
+                src="{{phone.images.front}}" alt="Front">
             </button>
-            <button mat-flat-button type="button" (click)="onClick(phone.images.side)"><img src="{{phone.images.side}}" alt="Front">
+            <button mat-flat-button type="button" (click)="onClick(phone.images.side)"><img src="{{phone.images.side}}"
+                                                                                            alt="Front">
             </button>
-            <button mat-flat-button type="button" (click)="onClick(phone.images.back)"><img src="{{phone.images.back}}" alt="Front">
+            <button mat-flat-button type="button" (click)="onClick(phone.images.back)"><img src="{{phone.images.back}}"
+                                                                                            alt="Front">
             </button>
         </div>
 
@@ -80,30 +84,32 @@
 
         <mat-card>
             <mat-card-title>Monthly</mat-card-title>
-            <p>Duration {{contractForm.get('contractDuration').value}}
+            <p>Duration {{this.contractDuration.duration}}
                 <span *ngIf="contractForm.get('contractDuration').value === '1'; else years">year</span>
                 <ng-template #years>years</ng-template>
             </p>
             <mat-card-content>
                 <div class="section">
                     <div class="row">
-                        <span>5 GB + 120 min. bellen</span>
-                        <span>{{17.50 | currency}}</span>
+                        <span>{{this.contractInternet.internet}}
+                            GB + {{this.contractMinutes.minutes}}</span>
+                        <span>{{this.contractInternet.price + this.contractMinutes.price + this.contractDuration.price | currency }}</span>
                     </div>
                     <div class="row">
                         <span>Toestelkrediet</span>
-                        <span>{{25.00 | currency}}</span>
+                        <span>{{phone.price / (contractDuration.duration == '1' ? 12 : 24) | currency}}</span>
                     </div>
                 </div>
                 <mat-divider></mat-divider>
                 <div class="section">
                     <div class="row">
                         <span class="mat-body-strong">Total each month</span>
-                        <span class="mat-body-strong">{{42.50 | currency}}</span>
+                        <span
+                            class="mat-body-strong">{{this.contractInternet.price + 25.00 + this.contractDuration.price | currency}}</span>
                     </div>
                     <div class="row">
                         <span class="mat-body-strong">After contract duration ends</span>
-                        <span>{{17.50 | currency}}</span>
+                        <span>{{this.contractInternet.price + this.contractMinutes.price + this.contractDuration.price | currency}}</span>
                     </div>
                 </div>
                 <mat-divider></mat-divider>
@@ -111,7 +117,7 @@
                 <div class="section">
                     <div class="row">
                         <span>{{phone.brand}} {{phone.model}} {{phone.storage}} {{this.phone.colors[0].color | titlecase}}</span>
-                        <span>{{17.50 | currency}}</span>
+                        <span>{{phone.price | currency}}</span>
                     </div>
                     <div class="row">
                         <span class="mat-body-strong">Thuiskopieheffing</span>
