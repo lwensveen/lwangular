@@ -1,8 +1,10 @@
 <div class="shopping-cart">
     <mat-card>
         <mat-card-title>My shoppingcart</mat-card-title>
+
         <mat-divider></mat-divider>
-        <mat-card-content>
+
+        <mat-card-content *ngFor="let order of orders">
             <div class="left">
                 <img
                     src="http://webshop-env-prod.gfz3ypkeuu.eu-west-1.elasticbeanstalk.com/images/webshop/samsung/dvi-front_Samsung_S10_Blue_305x450.png"
@@ -22,7 +24,9 @@
                         <span>{{25.00 | currency}}</span>
                     </div>
                 </div>
+
                 <mat-divider inset></mat-divider>
+
                 <div class="section">
                     <div class="row">
                         <span class="mat-body-strong">Total each month</span>
@@ -33,8 +37,11 @@
                         <span>{{17.50 | currency}}</span>
                     </div>
                 </div>
+
                 <mat-divider inset></mat-divider>
+
                 <mat-card-title class="one-time-costs">One time costs</mat-card-title>
+
                 <div class="section">
                     <div class="row">
 <!--                        <span>{{phone.brand}} {{phone.model}} {{phone.storage}} {{this.phone.colors[0].color | titlecase}}</span>-->
@@ -48,7 +55,9 @@
                         <span class="mat-body-strong">Contract costs</span>
                         <span>{{25.00 | currency}}</span>
                     </div>
+
                     <mat-divider inset></mat-divider>
+
                     <div class="section">
                         <div class="row mat-body-strong">
                             <span>Total one time costs</span>
@@ -58,6 +67,7 @@
                 </div>
             </div>
         </mat-card-content>
+
         <mat-card-actions align="end">
             <button mat-flat-button color="primary" [routerLink]="['/examples/webshop/shop/customer-details']">Next
             </button>
@@ -70,7 +80,9 @@
                 Vragen
             </mat-card-title>
         </mat-card-header>
+
         <mat-divider></mat-divider>
+
         <mat-card-content class="text-content">
           <div>
               <h2>Gratis nummerbehoud</h2>
