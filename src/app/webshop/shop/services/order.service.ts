@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 import { ReplaySubject } from 'rxjs';
 import { Phone } from './phones';
 
+export interface Ordered {
+    order: Order;
+}
+
 export interface Order {
     id: string;
     phone: Phone;
@@ -12,7 +16,7 @@ export interface Order {
     providedIn: 'root'
 })
 export class OrderService {
-    public $order = new ReplaySubject<any>();
+    public $orders = new ReplaySubject<Ordered[]>();
 
     constructor() {
     }
