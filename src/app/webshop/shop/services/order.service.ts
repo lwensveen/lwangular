@@ -1,15 +1,18 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { ReplaySubject } from 'rxjs';
+import { Phone } from './phones';
 
 export interface Order {
-    bundle: string;
+    id: string;
+    phone: Phone;
+    contract: any;
 }
 
 @Injectable({
     providedIn: 'root'
 })
 export class OrderService {
-    public $order = new Subject<Order>();
+    public $order = new ReplaySubject<any>();
 
     constructor() {
     }
