@@ -1,13 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Ordered, OrderService } from '../services/order.service';
+import { uuid } from 'uuidv4';
+import { Test } from 'tslint';
+
+export interface FinalOrder {
+    order: Test;
+}
+
+export interface Test {
+    id: string;
+    userDetails: UserDetails;
+    orders: Ordered[]
+}
+
+export interface UserDetails {
+    firstname: string;
+}
 
 @Component({
     selector: 'app-customer-details',
     templateUrl: './customer-details.component.html',
     styleUrls: ['./customer-details.component.scss']
 })
-export class CustomerDetailsComponent {
+export class CustomerDetailsComponent implements OnInit {
+    step: number;
+    orders: Ordered[];
+    finalOrder: FinalOrder;
+
     customerDetails = this.formBuilder.group({
         typeOrder: ['', Validators.required],
         gender: ['', Validators.required],
@@ -31,11 +51,30 @@ export class CustomerDetailsComponent {
 
     constructor(
         private formBuilder: FormBuilder,
-        private router: Router,
+        private orderService: OrderService
     ) {
     }
 
+    ngOnInit(): void {
+        this.orderService.$orders.subscribe(orders => this.orders = orders);
+    }
+
     onSubmit() {
-        console.warn(this.customerDetails.value);
+        console.log(this.customerDetails.value);
+        console.log(this.orders);
+         this.finalOrder = {order: {id: uuid(), userDetails: {...this.customerDetails.value}, orders: {...this.orders}}};
+        console.log(this.finalOrder);
+    }
+
+    setStep(index: number) {
+        this.step = index;
+    }
+
+    nextStep() {
+        this.step++;
+    }
+
+    prevStep() {
+        this.step--;
     }
 }
