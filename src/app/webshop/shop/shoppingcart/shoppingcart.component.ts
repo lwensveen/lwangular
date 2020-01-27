@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Order, OrderService } from '../services/order.service';
+import { Ordered, OrderService } from '../services/order.service';
 
 @Component({
     selector: 'app-shoppingcart',
@@ -7,12 +7,12 @@ import { Order, OrderService } from '../services/order.service';
     styleUrls: ['./shoppingcart.component.scss']
 })
 export class ShoppingCartComponent implements OnInit {
-    orders: Order[];
+    orders: Ordered[];
 
     constructor(private orderService: OrderService) {
     }
 
     ngOnInit() {
-        this.orderService.$order.subscribe(orders => this.orders = orders);
+        this.orderService.$orders.subscribe(orders => this.orders = orders);
     }
 }
