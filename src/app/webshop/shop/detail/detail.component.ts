@@ -122,11 +122,11 @@ export class DetailComponent implements OnInit {
 
     onSubmit() {
         this.router.navigate(['/examples/webshop/shop/shoppingcart']).then(() => {
-            this.orderService.$order.next([{
+            this.orderService.$orders.next([{
                 order: {
                     id: uuid(),
-                    phone: {...this.phone},
-                    contract: {...this.contractForm.value}
+                    phone: this.phone,
+                    contract: this.contractForm.value
                 }
             }]);
         });

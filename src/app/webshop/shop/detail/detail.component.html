@@ -1,11 +1,11 @@
 <form class="detail" *ngIf="phone; else loading" [formGroup]="contractForm" (ngSubmit)="onSubmit()">
     <div class="choices">
         <mat-toolbar class="shop-toolbar">{{phone.brand}} {{phone.model}}</mat-toolbar>
-        <mat-accordion class="example-headers-align" multi="true">
-            <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+        <mat-accordion class="example-headers-align">
+            <mat-expansion-panel [expanded]="true" hideToggle>
                 <mat-expansion-panel-header>
                     <mat-panel-title>
-                        Duration
+                        Contract duration
                     </mat-panel-title>
                 </mat-expansion-panel-header>
 
