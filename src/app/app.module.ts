@@ -20,6 +20,7 @@ import { MatInputModule } from '@angular/material/input';
 import { InterceptorService } from './services/interceptor.service';
 import { registerLocaleData } from '@angular/common';
 import localeNl from '@angular/common/locales/nl';
+import { MatNativeDateModule } from '@angular/material';
 
 registerLocaleData(localeNl);
 
@@ -40,10 +41,11 @@ registerLocaleData(localeNl);
         MatButtonModule,
         MatCardModule,
         MatIconModule,
+        MatInputModule,
         MatListModule,
         MatMenuModule,
+        MatNativeDateModule,
         MatToolbarModule,
-        MatInputModule,
     ],
     providers: [
         {
