@@ -17,8 +17,10 @@ import { DetailComponent } from './shop/detail/detail.component';
 import { ShoppingCartComponent } from './shop/shoppingcart/shoppingcart.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatDatepickerModule, MatProgressSpinnerModule, MatToolbarModule } from '@angular/material';
 import { CustomerDetailsComponent } from './shop/customer-details/customer-details.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
     declarations: [
