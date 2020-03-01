@@ -21,6 +21,8 @@ import { InterceptorService } from './services/interceptor.service';
 import { registerLocaleData } from '@angular/common';
 import localeNl from '@angular/common/locales/nl';
 import { MatNativeDateModule } from '@angular/material/core';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
 
 registerLocaleData(localeNl);
 
@@ -46,6 +48,13 @@ registerLocaleData(localeNl);
         MatMenuModule,
         MatNativeDateModule,
         MatToolbarModule,
+        StoreModule.forRoot(reducers, {
+      metaReducers,
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true
+      }
+    }),
     ],
     providers: [
         {
