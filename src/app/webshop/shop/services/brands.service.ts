@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Brands } from './brands';
+import { Brand } from './brands';
 import { Observable, of } from 'rxjs';
 
-export const BRANDS: Brands[] = [
+export const BRANDS: Brand[] = [
     {
         id: 1,
         name: 'Apple'
@@ -14,15 +14,15 @@ export const BRANDS: Brands[] = [
 ];
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class BrandsService {
 
-  constructor() { }
+    constructor() {
+    }
 
 
-
-    getBrands(): Observable<Brands[]> {
+    getBrands(): Observable<Brand[]> {
 
         return of(BRANDS);
         // return this.http.get<Content[]>(CONTENT)

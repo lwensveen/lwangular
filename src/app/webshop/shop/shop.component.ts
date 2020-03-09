@@ -1,13 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { BehaviorSubject, Observable, Subject, Subscription } from 'rxjs';
-import { PhonesService } from './services/phones.service';
-import { Brands } from './services/brands';
-import { BrandsService } from './services/brands.service';
+import { Observable, Subject, Subscription } from 'rxjs';
+import { Brand } from './services/brands';
 import { OperatingSystem } from './services/operatingSystem';
-import { OperatingSystemService } from './services/operating-system.service';
-import { distinctUntilChanged, filter, map, mergeMap, take } from 'rxjs/operators';
 import { Phone } from './services/phones';
 import { MatCheckboxChange } from '@angular/material/checkbox';
+import { Store } from '@ngrx/store';
+import { filter, reset } from './actions/phone.actions';
 
 @Component({
     selector: 'app-shop',
@@ -15,75 +13,55 @@ import { MatCheckboxChange } from '@angular/material/checkbox';
     styleUrls: ['./shop.component.scss']
 })
 export class ShopComponent implements OnInit, OnDestroy {
-    $phonesSubject = new BehaviorSubject<Phone[]>(null);
-    $brands: Observable<Brands[]>;
+    brands$: Observable<Brand[]> = this.store.select(state => state.brands.brands);
+    operatingSystems$: Observable<OperatingSystem[]> = this.store.select(state => state.operatingSystems.operatingSystems);
+    phones$: Observable<Phone[]> = this.store.select(state => state.phones.phones);
+
+
     $handleBrands = new Subject();
-    $operatingSystem: Observable<OperatingSystem[]>;
     $handleOperatingSystem = new Subject();
-    phones: Phone[];
     subscriptions: Subscription[] = [];
 
     constructor(
-        private phonesService: PhonesService,
-        private brandsService: BrandsService,
-        private operatingSystemService: OperatingSystemService
+        private store: Store<{
+            brands: {
+                brands: Brand[];
+            },
+            operatingSystems: {
+                operatingSystems: OperatingSystem[];
+            },
+            phones: {
+                phones: Phone[];
+            },
+        }>
     ) {
     }
 
     ngOnInit() {
-        this.getContent();
+        this.store.dispatch({type: '[Shop Page] Load Brands'});
+        this.store.dispatch({type: '[Shop Page] Load OperatingSystems'});
+        this.store.dispatch({type: '[Shop Page] Load Phones'});
 
         this.subscriptions.push(
-            this.$handleBrands.pipe(
-                distinctUntilChanged()
-            ).subscribe((evt: MatCheckboxChange) => {
-
+            this.$handleBrands.subscribe((evt: MatCheckboxChange) => {
                 if (evt.checked === true) {
-                    this.$phonesSubject.pipe(
-                        take(1),
-                        map(phones => phones.filter(phone => phone.brand === evt.source.value)),
-                    ).subscribe(phones => {
-                         this.$phonesSubject.next(phones);
-                    });
-                    return;
+                    return this.store.dispatch(filter({evt}));
                 }
-
-                return this.$phonesSubject.next(this.phones);
+                return this.store.dispatch(reset());
             })
         );
 
         this.subscriptions.push(
-            this.$handleOperatingSystem.pipe(
-                distinctUntilChanged()
-            ).subscribe((evt: MatCheckboxChange)  => {
-
+            this.$handleOperatingSystem.subscribe((evt: MatCheckboxChange) => {
                 if (evt.checked === true) {
-                    this.$phonesSubject.pipe(
-                        take(1),
-                        map((phones: Phone[]) => phones.filter(phone => phone.os === evt.source.value)),
-                    ).subscribe(phones => {
-                        this.$phonesSubject.next(phones);
-                    });
-                    return;
+                    this.store.dispatch(filter({evt}));
                 }
-
-                return this.$phonesSubject.next(this.phones);
             })
         );
     }
 
     fixUrl(url) {
         return url.replace(/\s/g, '');
-    }
-
-    getContent(): void {
-        this.phonesService.getPhones().subscribe(phones => {
-            this.phones = phones;
-            this.$phonesSubject.next(phones);
-        });
-
-        this.$brands = this.brandsService.getBrands();
-        this.$operatingSystem = this.operatingSystemService.getOS();
     }
 
     ngOnDestroy() {

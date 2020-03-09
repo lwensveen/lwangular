@@ -21,6 +21,14 @@ import { CustomerDetailsComponent } from './shop/customer-details/customer-detai
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { EffectsModule } from '@ngrx/effects';
+import { BrandEffects } from './shop/effects/brand.effects';
+import { PhoneEffects } from './shop/effects/phone.effects';
+import { OperatingSystemEffects } from './shop/effects/operating-system.effects';
+import { StoreModule } from '@ngrx/store';
+import * as fromBrands from './shop/reducers/brand.reducer';
+import * as fromOperatingSystem from './shop/reducers/operating-system.reducer';
+import * as fromPhone from './shop/reducers/phone.reducer';
 
 @NgModule({
     declarations: [
@@ -31,6 +39,14 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
         WebshopComponent,
     ],
     imports: [
+        StoreModule.forFeature('brands', fromBrands.reducer),
+        StoreModule.forFeature('operatingSystems', fromOperatingSystem.reducer,),
+        StoreModule.forFeature('phones', fromPhone.reducer,),
+        EffectsModule.forFeature([
+            BrandEffects,
+            PhoneEffects,
+            OperatingSystemEffects
+        ]),
         CommonModule,
         FormsModule,
         MatButtonModule,
