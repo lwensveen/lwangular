@@ -1,7 +1,7 @@
 <div class="overview">
     <mat-toolbar class="shop-toolbar">Alle telefoons</mat-toolbar>
 
-    <div class="phone-list" *ngIf="($brands || $operatingSystem)">
+    <div class="phone-list">
         <div class="filters">
             <mat-toolbar class="shop-toolbar">Filters</mat-toolbar>
             <mat-accordion>
@@ -17,7 +17,7 @@
 
                     <div class="checkboxes">
                         <mat-checkbox
-                            *ngFor="let brand of $brands | async"
+                            *ngFor="let brand of brands$ | async"
                             (change)="this.$handleBrands.next($event)"
                             [value]="brand.name">
                             {{brand.name}}
@@ -38,7 +38,7 @@
 
                     <div class="checkboxes">
                         <mat-checkbox
-                            *ngFor="let os of $operatingSystem | async"
+                            *ngFor="let os of operatingSystems$ | async"
                             (change)="this.$handleOperatingSystem.next($event)"
                             [value]="os.name">
                             {{os.name}}
@@ -50,7 +50,7 @@
 
         <div class="test-list">
             <mat-toolbar class="shop-toolbar">Telefoons</mat-toolbar>
-            <div class="phones" *ngIf="($phonesSubject | async) as phones; else loading">
+            <div class="phones" *ngIf="(phones$ | async) as phones; else loading">
 
                 <mat-card *ngFor="let phone of phones" class="phone"
                           [routerLink]="['product', fixUrl(phone.brand + phone.model),  phone.id]">
