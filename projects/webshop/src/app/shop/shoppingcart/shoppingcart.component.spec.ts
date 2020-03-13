@@ -1,25 +1,32 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ShoppingCartComponent } from './shoppingcart.component';
+import { MatCardModule } from '@angular/material/card';
+import { RouterTestingModule } from '@angular/router/testing';
+import { MatDividerModule } from '@angular/material/divider';
 
-import { ShoppingcartComponent } from './shoppingcart.component';
 
 describe('ShoppingcartComponent', () => {
-  let component: ShoppingcartComponent;
-  let fixture: ComponentFixture<ShoppingcartComponent>;
+    let component: ShoppingCartComponent;
+    let fixture: ComponentFixture<ShoppingCartComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ ShoppingcartComponent ]
-    })
-    .compileComponents();
-  }));
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            imports: [
+                MatCardModule,
+                MatDividerModule,
+                RouterTestingModule
+            ],
+            declarations: [ShoppingCartComponent]
+        }).compileComponents();
+    }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(ShoppingcartComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(ShoppingCartComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });

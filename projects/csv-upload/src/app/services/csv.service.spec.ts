@@ -6,7 +6,7 @@ describe('CsvService', () => {
     beforeEach(() => TestBed.configureTestingModule({}));
 
     it('should be created', () => {
-        const service: CsvService = TestBed.get(CsvService);
+        const service: CsvService = TestBed.inject(CsvService);
         expect(service).toBeTruthy();
     });
 });

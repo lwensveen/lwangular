@@ -6,7 +6,7 @@ describe('OperatingSystemService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: OperatingSystemService = TestBed.get(OperatingSystemService);
+    const service: OperatingSystemService = TestBed.inject(OperatingSystemService);
     expect(service).toBeTruthy();
   });
 });
