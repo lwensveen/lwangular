@@ -1,0 +1,148 @@
+<form class="detail" *ngIf="phone; else loading" [formGroup]="contractForm" (ngSubmit)="onSubmit()">
+    <div class="choices">
+        <mat-toolbar class="shop-toolbar">{{phone.brand}} {{phone.model}}</mat-toolbar>
+        <mat-accordion class="example-headers-align">
+            <mat-expansion-panel [expanded]="true" (opened)="setStep(0)" hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Contract duration
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <mat-radio-group aria-label="Select an option" formControlName="contractDuration">
+                    <mat-radio-button *ngFor="let duration of durations"
+                                      value="{{duration.duration}} | {{duration.price}}">{{duration.duration}} year
+                    </mat-radio-button>
+                </mat-radio-group>
+
+                <mat-action-row>
+                    <button mat-flat-button color="primary" type="button" (click)="nextStep()">Next</button>
+                </mat-action-row>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Minutes
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <mat-radio-group aria-label="Select an option" formControlName="contractMinutes">
+                    <mat-radio-button *ngFor="let minute of minutes"
+                                      value="{{minute.minute}} | {{minute.price}}">{{minute.minute}}</mat-radio-button>
+                </mat-radio-group>
+
+                <mat-action-row>
+                    <button mat-flat-button color="warn" type="button" (click)="prevStep()">Previous</button>
+                    <button mat-flat-button color="primary" type="button" (click)="nextStep()">Next</button>
+                </mat-action-row>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Internet
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <mat-radio-group class="dkwoa" aria-label="Select an option" formControlName="contractInternet">
+                    <mat-radio-button *ngFor="let internet of internet" value="{{internet.internet}} | {{internet.price}}">
+                        {{internet.internet}} + {{this.contractMinutes.minutes}}
+                        <span class="price">{{parseInt(internet.price) + this.contractMinutes.price + this.contractDuration.price | currency}}</span>
+                    </mat-radio-button>
+                </mat-radio-group>
+
+                <mat-action-row>
+                    <button mat-flat-button color="warn" type="button" (click)="prevStep()">Previous</button>
+                    <button mat-flat-button color="primary" type="button" (click)="nextStep()">End</button>
+                </mat-action-row>
+            </mat-expansion-panel>
+
+        </mat-accordion>
+    </div>
+
+    <div class="receipt">
+        <img src="{{swapImage}}" alt="{{phone.title}}">
+
+        <div class="views">
+            <button mat-flat-button type="button" (click)="onClick(phone.images.front)"><img
+                src="{{phone.images.front}}" alt="Front">
+            </button>
+            <button mat-flat-button type="button" (click)="onClick(phone.images.side)"><img src="{{phone.images.side}}"
+                                                                                            alt="Front">
+            </button>
+            <button mat-flat-button type="button" (click)="onClick(phone.images.back)"><img src="{{phone.images.back}}"
+                                                                                            alt="Front">
+            </button>
+        </div>
+
+        <mat-card class="color-options">
+            <mat-radio-group aria-label="Select an option">
+                <mat-radio-button *ngFor="let color of phone.colors" [value]="color"></mat-radio-button>
+            </mat-radio-group>
+        </mat-card>
+
+        <mat-card>
+            <mat-card-title>Monthly</mat-card-title>
+            <p>Duration {{this.contractDuration.duration}}
+                <span *ngIf="contractForm.get('contractDuration').value === '1'; else years">year</span>
+                <ng-template #years>years</ng-template>
+            </p>
+            <mat-card-content>
+                <div class="section">
+                    <div class="row">
+                        <span>{{this.contractInternet.internet}} + {{this.contractMinutes.minutes}}</span>
+                        <span>{{this.contractInternet.price + this.contractMinutes.price + this.contractDuration.price | currency }}</span>
+                    </div>
+                    <div class="row">
+                        <span>Toestelkrediet</span>
+                        <span>{{phone.price / (contractDuration.duration == '1' ? 12 : 24) | currency}}</span>
+                    </div>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="section">
+                    <div class="row">
+                        <span class="mat-body-strong">Total each month</span>
+                        <span
+                            class="mat-body-strong">{{this.contractInternet.price + 25.00 + this.contractDuration.price | currency}}</span>
+                    </div>
+                    <div class="row">
+                        <span class="mat-body-strong">After contract duration ends</span>
+                        <span>{{this.contractInternet.price + this.contractMinutes.price + this.contractDuration.price | currency}}</span>
+                    </div>
+                </div>
+                <mat-divider></mat-divider>
+                <mat-card-title class="one-time-costs">One time costs</mat-card-title>
+                <div class="section">
+                    <div class="row">
+                        <span>{{phone.brand}} {{phone.model}} {{phone.storage}} {{this.phone.colors[0].color | titlecase}}</span>
+                        <span>{{phone.price | currency}}</span>
+                    </div>
+                    <div class="row">
+                        <span class="mat-body-strong">Thuiskopieheffing</span>
+                        <span>{{5.69 | currency}}</span>
+                    </div>
+                    <div class="row">
+                        <span class="mat-body-strong">Contract costs</span>
+                        <span>{{25.00 | currency}}</span>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <div class="section">
+                        <div class="row mat-body-strong">
+                            <span>Total one time costs</span>
+                            <span>{{30.69 | currency}}</span>
+                        </div>
+                    </div>
+                </div>
+            </mat-card-content>
+            <mat-card-actions align="end">
+                <button type="submit" [disabled]="!contractForm.valid" mat-flat-button color="primary">Next step
+                </button>
+            </mat-card-actions>
+        </mat-card>
+
+    </div>
+</form>
+<ng-template #loading>
+    <mat-spinner></mat-spinner>
+</ng-template>

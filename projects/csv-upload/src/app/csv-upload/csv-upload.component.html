@@ -1,0 +1,28 @@
+<div class="csv-upload">
+    <mat-card>
+        <mat-card-title>{{title}}</mat-card-title>
+
+        <input (change)="this.$handleCSV.next($event)" accept=".csv" name="csv" type="file"/>
+
+        <div *ngIf="($csv | async) as csv">
+            <mat-form-field>
+                <label>
+                    <input matInput (input)="this.$handleIssueCountFilter.next($event)" name="issueCountFilter"
+                           placeholder="Filter Issuecount"/>
+                </label>
+            </mat-form-field>
+
+            <table>
+                <tr (click)="orderBy()">
+                    <th *ngFor="let header of headers">{{header}}</th>
+                </tr>
+                <tr *ngFor="let person of csv">
+                    <td>{{person.firstName}}</td>
+                    <td>{{person.surname}}</td>
+                    <td>{{person.issueCount}}</td>
+                    <td>{{person.dateOfBirth}}</td>
+                </tr>
+            </table>
+        </div>
+    </mat-card>
+</div>

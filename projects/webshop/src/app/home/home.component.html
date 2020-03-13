@@ -1,0 +1,45 @@
+<div class="banner">
+    <img class="img-responsive" src="http://localhost:5000/images/webshop/banner.jpg" alt="Banner">
+</div>
+
+<div class="promo-section">
+    <button [routerLink]="['shop']" mat-flat-button color="accent">Telefoons</button>
+    <button mat-flat-button color="accent">Sim only</button>
+    <button mat-flat-button color="accent">Verlengen</button>
+    <button mat-flat-button color="accent">Abonnementen</button>
+</div>
+
+<div class="background">
+    <mat-list>
+        <h3 mat-subheader>BESTELLEN</h3>
+        <mat-divider></mat-divider>
+        <mat-list-item *ngFor="let folder of folders">
+            <mat-divider></mat-divider>
+            <mat-icon mat-list-icon>folder</mat-icon>
+            <h4 mat-line>{{folder.name}}</h4>
+            <p mat-line> {{folder.updated | date}} </p>
+        </mat-list-item>
+    </mat-list>
+
+    <mat-list>
+        <h3 mat-subheader>ZELF REGELEN</h3>
+        <mat-divider></mat-divider>
+        <mat-list-item *ngFor="let folder of folders">
+            <mat-divider></mat-divider>
+            <mat-icon mat-list-icon>folder</mat-icon>
+            <h4 mat-line>{{folder.name}}</h4>
+            <p mat-line> {{folder.updated | date}} </p>
+        </mat-list-item>
+    </mat-list>
+
+    <mat-list>
+        <h3 mat-subheader>SERVICE</h3>
+        <mat-divider></mat-divider>
+        <mat-list-item *ngFor="let folder of folders">
+            <mat-divider></mat-divider>
+            <mat-icon mat-list-icon>folder</mat-icon>
+            <h4 mat-line>{{folder.name}}</h4>
+            <p mat-line> {{folder.updated | date}} </p>
+        </mat-list-item>
+    </mat-list>
+</div>

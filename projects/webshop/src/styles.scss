@@ -1,0 +1,43 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~normalize.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+html, body {
+    display: flex;
+    flex-direction: column;
+    font-weight: 300;
+    height: 100%;
+}
+
+app-root {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    background-color: #759BA4;
+}
+
+app-home, app-csv-upload, app-webshop, app-detail, app-shop, app-shoppingcart, app-customer-details {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+app-customer-details {
+    align-items: center;
+    background-color: #759BA4;
+    justify-content: center;
+}
+
+.img-responsive {
+    height: auto;
+    width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6, .mat-card-title, .mat-toolbar, .mat-toolbar > h6 {
+    font-weight: 300;
+}
+
+.shop-toolbar {
+    background-color: #fff;
+    margin-bottom: 20px;
+}
