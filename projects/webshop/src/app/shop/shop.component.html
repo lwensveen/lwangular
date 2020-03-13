@@ -17,8 +17,8 @@
 
                     <div class="checkboxes">
                         <mat-checkbox
-                            *ngFor="let brand of brands$ | async"
                             (change)="this.$handleBrands.next($event)"
+                            *ngFor="let brand of brands$ | async"
                             [value]="brand.name">
                             {{brand.name}}
                         </mat-checkbox>
@@ -38,8 +38,8 @@
 
                     <div class="checkboxes">
                         <mat-checkbox
-                            *ngFor="let os of operatingSystems$ | async"
                             (change)="this.$handleOperatingSystem.next($event)"
+                            *ngFor="let os of operatingSystems$ | async"
                             [value]="os.name">
                             {{os.name}}
                         </mat-checkbox>
@@ -50,13 +50,13 @@
 
         <div class="test-list">
             <mat-toolbar class="shop-toolbar">Telefoons</mat-toolbar>
-            <div class="phones" *ngIf="(phones$ | async) as phones; else loading">
+            <div *ngIf="(phones$ | async) as phones; else loading" class="phones">
 
-                <mat-card *ngFor="let phone of phones" class="phone"
-                          [routerLink]="['product', fixUrl(phone.brand + phone.model),  phone.id]">
+                <mat-card *ngFor="let phone of phones" [routerLink]="['product', fixUrl(phone.brand + phone.model),  phone.id]"
+                          class="phone">
                     <mat-card-header></mat-card-header>
 
-                    <img mat-card-image src="{{phone.images.front}}" alt="Front">
+                    <img alt="Front" mat-card-image src="{{phone.images.front}}">
 
                     <mat-chip-list>
                         <mat-chip *ngFor="let color of phone.colors"

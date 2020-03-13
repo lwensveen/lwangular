@@ -12,8 +12,8 @@ export class OperatingSystemEffects {
         mergeMap(() => this.operatingSystemService.getOS()
             .pipe(
                 map(operatingSystems => ({type: '[OperatingSystems API] OperatingSystems Loaded Success', payload: operatingSystems}),
-                catchError(() => EMPTY)
-            ))
+                    catchError(() => EMPTY)
+                ))
         )
     ));
 

@@ -15,11 +15,12 @@ export const OPERATINGSYSTEM: OperatingSystem[] = [
 
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class OperatingSystemService {
 
-  constructor() { }
+    constructor() {
+    }
 
 
     getOS(): Observable<OperatingSystem[]> {

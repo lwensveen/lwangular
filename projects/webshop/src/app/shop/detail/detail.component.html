@@ -1,8 +1,8 @@
-<form class="detail" *ngIf="phone; else loading" [formGroup]="contractForm" (ngSubmit)="onSubmit()">
+<form (ngSubmit)="onSubmit()" *ngIf="phone; else loading" [formGroup]="contractForm" class="detail">
     <div class="choices">
         <mat-toolbar class="shop-toolbar">{{phone.brand}} {{phone.model}}</mat-toolbar>
         <mat-accordion class="example-headers-align">
-            <mat-expansion-panel [expanded]="true" (opened)="setStep(0)" hideToggle>
+            <mat-expansion-panel (opened)="setStep(0)" [expanded]="true" hideToggle>
                 <mat-expansion-panel-header>
                     <mat-panel-title>
                         Contract duration
@@ -16,11 +16,11 @@
                 </mat-radio-group>
 
                 <mat-action-row>
-                    <button mat-flat-button color="primary" type="button" (click)="nextStep()">Next</button>
+                    <button (click)="nextStep()" color="primary" mat-flat-button type="button">Next</button>
                 </mat-action-row>
             </mat-expansion-panel>
 
-            <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+            <mat-expansion-panel (opened)="setStep(1)" [expanded]="step === 1" hideToggle>
                 <mat-expansion-panel-header>
                     <mat-panel-title>
                         Minutes
@@ -33,28 +33,30 @@
                 </mat-radio-group>
 
                 <mat-action-row>
-                    <button mat-flat-button color="warn" type="button" (click)="prevStep()">Previous</button>
-                    <button mat-flat-button color="primary" type="button" (click)="nextStep()">Next</button>
+                    <button (click)="prevStep()" color="warn" mat-flat-button type="button">Previous</button>
+                    <button (click)="nextStep()" color="primary" mat-flat-button type="button">Next</button>
                 </mat-action-row>
             </mat-expansion-panel>
 
-            <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+            <mat-expansion-panel (opened)="setStep(2)" [expanded]="step === 2" hideToggle>
                 <mat-expansion-panel-header>
                     <mat-panel-title>
                         Internet
                     </mat-panel-title>
                 </mat-expansion-panel-header>
 
-                <mat-radio-group class="dkwoa" aria-label="Select an option" formControlName="contractInternet">
-                    <mat-radio-button *ngFor="let internet of internet" value="{{internet.internet}} | {{internet.price}}">
+                <mat-radio-group aria-label="Select an option" class="dkwoa" formControlName="contractInternet">
+                    <mat-radio-button *ngFor="let internet of internet"
+                                      value="{{internet.internet}} | {{internet.price}}">
                         {{internet.internet}} + {{this.contractMinutes.minutes}}
-                        <span class="price">{{parseInt(internet.price) + this.contractMinutes.price + this.contractDuration.price | currency}}</span>
+                        <span
+                            class="price">{{parseInt(internet.price) + this.contractMinutes.price + this.contractDuration.price | currency}}</span>
                     </mat-radio-button>
                 </mat-radio-group>
 
                 <mat-action-row>
-                    <button mat-flat-button color="warn" type="button" (click)="prevStep()">Previous</button>
-                    <button mat-flat-button color="primary" type="button" (click)="nextStep()">End</button>
+                    <button (click)="prevStep()" color="warn" mat-flat-button type="button">Previous</button>
+                    <button (click)="nextStep()" color="primary" mat-flat-button type="button">End</button>
                 </mat-action-row>
             </mat-expansion-panel>
 
@@ -62,17 +64,17 @@
     </div>
 
     <div class="receipt">
-        <img src="{{swapImage}}" alt="{{phone.title}}">
+        <img alt="{{phone.title}}" src="{{swapImage}}">
 
         <div class="views">
-            <button mat-flat-button type="button" (click)="onClick(phone.images.front)"><img
-                src="{{phone.images.front}}" alt="Front">
+            <button (click)="onClick(phone.images.front)" mat-flat-button type="button"><img
+                alt="Front" src="{{phone.images.front}}">
             </button>
-            <button mat-flat-button type="button" (click)="onClick(phone.images.side)"><img src="{{phone.images.side}}"
-                                                                                            alt="Front">
+            <button (click)="onClick(phone.images.side)" mat-flat-button type="button"><img alt="Front"
+                                                                                            src="{{phone.images.side}}">
             </button>
-            <button mat-flat-button type="button" (click)="onClick(phone.images.back)"><img src="{{phone.images.back}}"
-                                                                                            alt="Front">
+            <button (click)="onClick(phone.images.back)" mat-flat-button type="button"><img alt="Front"
+                                                                                            src="{{phone.images.back}}">
             </button>
         </div>
 
@@ -136,7 +138,7 @@
                 </div>
             </mat-card-content>
             <mat-card-actions align="end">
-                <button type="submit" [disabled]="!contractForm.valid" mat-flat-button color="primary">Next step
+                <button [disabled]="!contractForm.valid" color="primary" mat-flat-button type="submit">Next step
                 </button>
             </mat-card-actions>
         </mat-card>

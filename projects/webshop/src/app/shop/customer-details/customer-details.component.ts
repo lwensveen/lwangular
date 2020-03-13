@@ -62,7 +62,7 @@ export class CustomerDetailsComponent implements OnInit {
     onSubmit() {
         console.log(this.customerDetails.value);
         console.log(this.orders);
-         this.finalOrder = {order: {id: uuid(), userDetails: {...this.customerDetails.value}, orders: {...this.orders}}};
+        this.finalOrder = {order: {id: uuid(), userDetails: {...this.customerDetails.value}, orders: {...this.orders}}};
         console.log(this.finalOrder);
     }
 

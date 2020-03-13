@@ -21,6 +21,7 @@ export interface ImageSides {
     side: string;
     back: string;
 }
+
 export interface Colors {
     color: string;
 }

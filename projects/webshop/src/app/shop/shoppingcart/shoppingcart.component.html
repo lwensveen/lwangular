@@ -7,8 +7,8 @@
         <mat-card-content *ngFor="let order of orders">
             <div class="left">
                 <img
-                    src="http://webshop-env-prod.gfz3ypkeuu.eu-west-1.elasticbeanstalk.com/images/webshop/samsung/dvi-front_Samsung_S10_Blue_305x450.png"
-                    alt="Phone">
+                    alt="Phone"
+                    src="http://webshop-env-prod.gfz3ypkeuu.eu-west-1.elasticbeanstalk.com/images/webshop/samsung/dvi-front_Samsung_S10_Blue_305x450.png">
                 <ul>
                     <li>Abonnement Go</li>
                 </ul>
@@ -44,7 +44,7 @@
 
                 <div class="section">
                     <div class="row">
-<!--                        <span>{{phone.brand}} {{phone.model}} {{phone.storage}} {{this.phone.colors[0].color | titlecase}}</span>-->
+                        <!--                        <span>{{phone.brand}} {{phone.model}} {{phone.storage}} {{this.phone.colors[0].color | titlecase}}</span>-->
                         <span>{{17.50 | currency}}</span>
                     </div>
                     <div class="row">
@@ -69,7 +69,7 @@
         </mat-card-content>
 
         <mat-card-actions align="end">
-            <button mat-flat-button color="primary" [routerLink]="['/shop/customer-details']">Next
+            <button [routerLink]="['/shop/customer-details']" color="primary" mat-flat-button>Next
             </button>
         </mat-card-actions>
     </mat-card>
@@ -84,10 +84,10 @@
         <mat-divider></mat-divider>
 
         <mat-card-content class="text-content">
-          <div>
-              <h2>Gratis nummerbehoud</h2>
-              <p>Nummerbehoud regel je eenvoudig na het plaatsen van je bestelling.</p>
-          </div>
+            <div>
+                <h2>Gratis nummerbehoud</h2>
+                <p>Nummerbehoud regel je eenvoudig na het plaatsen van je bestelling.</p>
+            </div>
 
             <div>
                 <h2>Bezorgen of ophalen</h2>

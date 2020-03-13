@@ -7,7 +7,7 @@
         <div *ngIf="($csv | async) as csv">
             <mat-form-field>
                 <label>
-                    <input matInput (input)="this.$handleIssueCountFilter.next($event)" name="issueCountFilter"
+                    <input (input)="this.$handleIssueCountFilter.next($event)" matInput name="issueCountFilter"
                            placeholder="Filter Issuecount"/>
                 </label>
             </mat-form-field>

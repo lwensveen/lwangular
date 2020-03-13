@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
-import { LayoutModule, InterceptorService } from 'lib-lwangular';
+import { InterceptorService, LayoutModule } from 'lib-lwangular';
 import { CsvUploadComponent } from './csv-upload/csv-upload.component';
 import { MatButtonModule } from '@angular/material/button';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';

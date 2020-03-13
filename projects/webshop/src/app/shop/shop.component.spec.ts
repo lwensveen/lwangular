@@ -11,31 +11,31 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 
 describe('ShopComponent', () => {
-  let component: ShopComponent;
-  let fixture: ComponentFixture<ShopComponent>;
+    let component: ShopComponent;
+    let fixture: ComponentFixture<ShopComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-        imports: [
-            BrowserAnimationsModule,
-            MatExpansionModule,
-            MatDividerModule,
-            MatListModule,
-            MatProgressSpinnerModule,
-            MatToolbarModule,
-            StoreModule.forRoot(reducers)
-        ],
-      declarations: [ ShopComponent ]
-    }).compileComponents();
-  }));
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            imports: [
+                BrowserAnimationsModule,
+                MatExpansionModule,
+                MatDividerModule,
+                MatListModule,
+                MatProgressSpinnerModule,
+                MatToolbarModule,
+                StoreModule.forRoot(reducers)
+            ],
+            declarations: [ShopComponent]
+        }).compileComponents();
+    }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(ShopComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(ShopComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });
