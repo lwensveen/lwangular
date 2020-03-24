@@ -4,8 +4,8 @@ import { Brand } from './services/brands';
 import { OperatingSystem } from './services/operatingSystem';
 import { Phone } from './services/phones';
 import { MatCheckboxChange } from '@angular/material/checkbox';
-import { Store } from '@ngrx/store';
-import { filter, reset } from './actions/phone.actions';
+import { select, Store } from '@ngrx/store';
+import * as fromPhone from './reducers/phone.reducer';
 
 @Component({
     selector: 'app-shop',
@@ -17,7 +17,6 @@ export class ShopComponent implements OnInit, OnDestroy {
     operatingSystems$: Observable<OperatingSystem[]> = this.store.select(state => state.os.operatingSystems);
     phones$: Observable<Phone[]> = this.store.select(state => state.phones.phones);
 
-
     $handleBrands = new Subject();
     $handleOperatingSystem = new Subject();
     subscriptions: Subscription[] = [];
@@ -26,36 +25,34 @@ export class ShopComponent implements OnInit, OnDestroy {
         private store: Store<{
             brands: {
                 brands: Brand[];
-            },
+            }
             os: {
                 operatingSystems: OperatingSystem[];
-            },
+            }
             phones: {
                 phones: Phone[];
-            },
+            }
         }>
     ) {
     }
 
     ngOnInit() {
+        this.brands$.subscribe(brands => console.log(brands))
         this.store.dispatch({type: '[Shop Page] Load Brands'});
         this.store.dispatch({type: '[Shop Page] Load OperatingSystems'});
         this.store.dispatch({type: '[Shop Page] Load Phones'});
 
         this.subscriptions.push(
             this.$handleBrands.subscribe((evt: MatCheckboxChange) => {
-                if (evt.checked === true) {
-                    return this.store.dispatch(filter({evt}));
-                }
-                return this.store.dispatch(reset());
+                // @ts-ignore
+                this.phones$ = this.store.pipe(select(fromPhone.selectFilteredPhones, {evt}));
             })
         );
 
         this.subscriptions.push(
             this.$handleOperatingSystem.subscribe((evt: MatCheckboxChange) => {
-                if (evt.checked === true) {
-                    this.store.dispatch(filter({evt}));
-                }
+                // @ts-ignore
+                this.phones$ = this.store.pipe(select(fromPhone.selectFilteredPhones, {evt}));
             })
         );
     }
