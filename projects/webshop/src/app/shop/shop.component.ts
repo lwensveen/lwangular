@@ -13,9 +13,9 @@ import * as fromPhone from './reducers/phone.reducer';
     styleUrls: ['./shop.component.scss']
 })
 export class ShopComponent implements OnInit, OnDestroy {
-    brands$: Observable<Brand[]> = this.store.select(state => state.brands.brands);
-    operatingSystems$: Observable<OperatingSystem[]> = this.store.select(state => state.os.operatingSystems);
-    phones$: Observable<Phone[]> = this.store.select(state => state.phones.phones);
+    brands$: Observable<{ brands: Brand[] }> = this.store.select(state => state.brands);
+    operatingSystems$: Observable<{ operatingSystems: OperatingSystem[] }> = this.store.select(state => state.os);
+    phones$: Observable<{ phones: Phone[] }> = this.store.select(state => state.phones);
 
     $handleBrands = new Subject();
     $handleOperatingSystem = new Subject();

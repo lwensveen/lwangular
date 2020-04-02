@@ -16,9 +16,7 @@ export const selectPhones = (state: State) => state.phones.phones;
 
 const phoneReducer = createReducer(
     initialState,
-    on(loaded, (state, action) => {
-        return ({...state, phones: action.payload});
-    })
+    on(loaded, (state, action) => ({...state, phones: action.payload}))
 );
 
 export function reducer(state: State | undefined, action: Action) {
