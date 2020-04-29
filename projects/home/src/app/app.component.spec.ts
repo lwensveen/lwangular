@@ -24,8 +24,8 @@ describe('AppComponent', () => {
 
     it(`should have as title 'home'`, () => {
         const fixture = TestBed.createComponent(AppComponent);
-        const app = fixture.componentInstance;
-        expect(app.title).toEqual('home');
+        const title = fixture.nativeElement.querySelector('title');
+        expect(title).toEqual('Home');
     });
 
     // it('should render title', () => {

@@ -59,18 +59,19 @@ export class CsvUploadComponent implements OnInit, OnDestroy {
             this.$handleIssueCountFilter.pipe(
                 distinctUntilChanged(),
             ).subscribe(evt => {
-
-                if (evt.data) {
-                    this.filterBy(parseInt(evt.data, 10));
-                    return;
-                }
-
-                this.$csv.next(this.persons);
+                selectFiltered(evt);
             }));
-
     }
 
     ngOnDestroy() {
         this.subscriptions.forEach(subscription => subscription.unsubscribe());
     }
+}
+
+function selectFiltered(evt: any) {
+    if (evt.data) {
+        return this.filterBy(parseInt(evt.data, 10));
+    }
+
+    this.$csv.next(this.persons);
 }
