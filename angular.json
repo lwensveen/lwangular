@@ -83,6 +83,7 @@
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
                     "options": {
+                        "codeCoverage": true,
                         "main": "projects/csv-upload/src/test.ts",
                         "polyfills": "projects/csv-upload/src/polyfills.ts",
                         "tsConfig": "projects/csv-upload/tsconfig.spec.json",
@@ -204,6 +205,7 @@
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
                     "options": {
+                        "codeCoverage": true,
                         "main": "projects/webshop/src/test.ts",
                         "polyfills": "projects/webshop/src/polyfills.ts",
                         "tsConfig": "projects/webshop/tsconfig.spec.json",
@@ -266,6 +268,7 @@
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
                     "options": {
+                        "codeCoverage": true,
                         "main": "projects/lib-lwangular/src/test.ts",
                         "tsConfig": "projects/lib-lwangular/tsconfig.spec.json",
                         "karmaConfig": "projects/lib-lwangular/karma.conf.js"
@@ -365,6 +368,7 @@
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
                     "options": {
+                        "codeCoverage": true,
                         "main": "projects/home/src/test.ts",
                         "polyfills": "projects/home/src/polyfills.ts",
                         "tsConfig": "projects/home/tsconfig.spec.json",
